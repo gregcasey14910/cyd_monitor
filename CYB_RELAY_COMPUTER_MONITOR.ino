@@ -294,7 +294,7 @@ void loop() {
 }
 
 // ESP-NOW callback
-void onDataReceive(const esp_now_recv_info *recv_info, const uint8_t *incomingData, int len) {
+void onDataReceive(const uint8_t *mac_addr, const uint8_t *incomingData, int len) {
   // Parse struct
   struct_message receivedData;
   memcpy(&receivedData, incomingData, sizeof(receivedData));
@@ -508,8 +508,8 @@ void drawHeader() {
   tft.fillRect(0, 0, 240, 25, ILI9341_BLUE);
   tft.setTextSize(2);
   tft.setTextColor(ILI9341_WHITE, ILI9341_BLUE);
-  tft.setCursor(5, 5);
-  tft.print("Casey RELAY Comp");
+  tft.setCursor(72, 5);
+  tft.print("ETC 9000");
 }
 
 void drawMacBanner() {
