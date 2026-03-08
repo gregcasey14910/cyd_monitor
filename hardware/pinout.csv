@@ -1,0 +1,58 @@
+CARRIER BOARD - MCP23017 INTERCONNECTION TABLE,,,,,,
+,,,,,,
+=== MCP23017 (U1) - I2C Address 0x20 ===,,,,,,
+U1 Pin,Pin Name,Net,Connected To,Component,Value,Notes
+1,GPB0,SW1,L1 pin 2,Pushbutton 1,TS1273CJ-R,Active LOW input - 10K pull-up
+2,GPB1,SW2,L2 pin 2,Pushbutton 2,TS1273CJ-R,Active LOW input - 10K pull-up
+3,GPB2,SW3,L3 pin 2,Pushbutton 3,TS1273CJ-R,Active LOW input - 10K pull-up
+4,GPB3,SW4,L4 pin 2,Pushbutton 4,TS1273CJ-R,Active LOW input - 10K pull-up
+5,GPB4,SW5,L5 pin 2,Pushbutton 5,TS1273CJ-R,Active LOW input - 10K pull-up
+6,GPB5,SW6,L6 pin 2,Pushbutton 6,TS1273CJ-R,Active LOW input - 10K pull-up
+7,GPB6,SW7,L7 pin 2,Pushbutton 7,TS1273CJ-R,Active LOW input - 10K pull-up
+8,GPB7,SW8,L8 pin 2,Pushbutton 8,TS1273CJ-R,Active LOW input - 10K pull-up
+9,VDD,VCC,Power,Supply,3.3V/5V,Power supply
+10,VSS,GND,Ground,Supply,,
+12,SCK,SCL,CN1 pin2 / P1 pin2 / ESP32,I2C Clock,,Also routed to CYD via connector
+13,SDA,SDA,CN1 pin3 / P1 pin3 / ESP32,I2C Data,,Also routed to CYD via connector
+15,A0,GND,Ground,,, I2C address bit 0 = 0
+16,A1,GND,Ground,,, I2C address bit 1 = 0
+17,A2,GND,Ground,,, I2C address bit 2 = 0 --> Address = 0x20
+18,RESET#,VCC,R17 333Ω pull-up,Reset,,Active LOW reset - pulled HIGH
+19,INTB,INTB,P3 pin 4,Interrupt B output,,Interrupt on Port B change (buttons)
+21,GPA0,LED8,R15 333Ω → GND,LED 8,TS1273CJ-R,Active HIGH output
+22,GPA1,LED7,R13 333Ω → GND,LED 7,TS1273CJ-R,Active HIGH output
+23,GPA2,LED6,R11 333Ω → GND,LED 6,TS1273CJ-R,Active HIGH output
+24,GPA3,LED5,R9 333Ω → GND,LED 5,TS1273CJ-R,Active HIGH output
+25,GPA4,LED4,R7 333Ω → GND,LED 4,TS1273CJ-R,Active HIGH output
+26,GPA5,LED3,R5 333Ω → GND,LED 3,TS1273CJ-R,Active HIGH output
+27,GPA6,LED2,R3 333Ω → GND,LED 2,TS1273CJ-R,Active HIGH output
+28,GPA7,LED1,R1 333Ω → R18 333Ω → GND,LED 1 (Green),HLMP-CM1A,Active HIGH output - double resistor
+,,,,,,
+=== CONNECTORS ===,,,,,,
+Connector,Pin,Net,Signal,Notes,,
+CN1,1,VCC,+5V,I2C connector (JST 4-pin 1.25mm),,
+CN1,2,SCL,I2C Clock,To MCP23017 pin 12,,
+CN1,3,SDA,I2C Data,To MCP23017 pin 13,,
+CN1,4,GND,Ground,,,
+P1,1,VCC,+5V,I2C connector (JST 4-pin 1.25mm) - same as CN1,,
+P1,2,SCL,I2C Clock,To MCP23017 pin 12,,
+P1,3,SDA,I2C Data,To MCP23017 pin 13,,
+P1,4,GND,Ground,,,
+P3,1,GND,Ground,Aux connector (JST 4-pin 1.25mm),,
+P3,2,GPIO35,Status output,ESP32 GPIO35 status signal,,
+P3,3,NC1,Not Connected,,,
+P3,4,INTB,Interrupt B,MCP23017 INTB → ESP32 GPIO35,,
+P4,1-4,VCC,+5V,10-pin IDC power header,,
+P4,5-8,GND,Ground,10-pin IDC power header,,
+,,,,,,
+=== CYD (ESP32) I2C PINS ===,,,,,,
+ESP32 Pin,Function,Net,Notes,,,
+GPIO21,I2C SDA,SDA,Default ESP32 I2C SDA - BUT also used as TFT_BL! Check conflict,,,
+GPIO22,I2C SCL,SCL,Default ESP32 I2C SCL,,,
+GPIO35,INTB Input,INTB,MCP23017 interrupt input (input-only pin on ESP32),,,
+,,,,,,
+=== PUSHBUTTONS (L1-L8) TS1273CJ-R ===,,,,,,
+Component,Pin,Net,Notes,,,
+L1-L8,Pin 2,SWx,Switch input to MCP23017 Port B,,,
+L1-L8,Pin 4+5,GND,Switch common ground,,,
+L1-L8,Pin 1+6,LED net,Internal illumination LED - controlled via resistor network,,,

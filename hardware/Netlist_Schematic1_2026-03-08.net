@@ -1,0 +1,2524 @@
+PROTEL NETLIST 2.0
+[
+DESIGNATOR
+CN1
+FOOTPRINT
+CONN-SMD_4P-P1.25_BM04B-GHS-TBT
+PARTTYPE
+BM04B-GHS-TBT(LF)(SN)(N)
+DESCRIPTION
+Pins Structure:1x4P Pitch:1.25mm Mounting Type:Surface Mount,Vertical Reference Series:GH Number of Pins:4P Number of Rows:1 Number of PINs Per Row:4 Row Spacing:- Current Rating:1A Contact Material:Phosphor Bronze Contact Plating:Tin Operating Temperatur
+Component Kind
+Standard
+LCSC Part Name
+1x4P 间距:1.25mm 立贴 系列:GH
+Supplier Part
+C2983876
+Manufacturer
+JST
+Manufacturer Part
+BM04B-GHS-TBT(LF)(SN)(N)
+Supplier Footprint
+SMD,P=1.25mm
+JLCPCB Part Class
+Extended Part
+Datasheet
+https://item.szlcsc.com/datasheet/BM04B-GHS-TBT(LF)(SN)(N)/3423628.html
+Supplier
+LCSC
+Add into BOM
+yes
+Convert to PCB
+yes
+3D Model Title
+CONN-SMD_4P-P1.25_BM04B-GHS-TBT
+Pins Structure
+1x4P
+Pitch
+1.25mm
+Mounting Type
+Surface Mount,Vertical
+Reference Series
+GH
+Number of Pins
+4P
+Number of Rows
+1
+Number of PINs Per Row
+4
+Row Spacing
+-
+Current Rating
+1A
+Contact Material
+Phosphor Bronze
+Contact Plating
+Tin
+Operating Temperature
+-25℃~+85℃
+Voltage Rating
+50V
+Plastic Material
+PA9T
+Flame Retardant Rating
+UL94V-0
+Supplementary Features
+Auxiliary Solder Pin
+Color
+White
+Z-Height of the Board
+4.05mm
+X-Length of Bottom Edge on Board (Spacing Line)
+8.25mm
+Y-Width of Bottom Edge on Board
+4.32mm
+Description
+Pins Structure:1x4P Pitch:1.25mm Mounting Type:Surface Mount,Vertical Reference Series:GH Number of Pins:4P Number of Rows:1 Number of PINs Per Row:4 Row Spacing:- Current Rating:1A Contact Material:Phosphor Bronze Contact Plating:Tin Operating Temperatur
+Symbol
+BM04B-GHS-TBT(LF)(SN)(N)
+Designator
+CN1
+Name
+BM04B-GHS-TBT(LF)(SN)(N)
+Device
+BM04B-GHS-TBT(LF)(SN)(N)
+Reuse Block
+
+Group ID
+
+Channel ID
+
+Unique ID
+gge1
+
+*
+]
+[
+DESIGNATOR
+U1
+FOOTPRINT
+DIP-28_L34.6-W7.3-P2.54-LS10.2-BL
+PARTTYPE
+MCP23017-E/SP
+DESCRIPTION
+Interface:I2C Interrupt Output:Interrupt Output Output Type:- Voltage - Supply:1.8V~5.5V Voltage - Supply:1.8V~5.5V Current - Output Low(IOL):- Current - Output High(IOH):- Clock Frequency:1.7MHz Operating Temperature:-40℃~+125℃ Operating Temperature:-40℃
+Component Kind
+Standard
+Symbol
+MCP23017-E/SP
+LCSC Part Name
+16位带串行接口的I/O扩展器
+Supplier Part
+C647352
+Manufacturer
+MICROCHIP(美国微芯)
+Manufacturer Part
+MCP23017-E/SP
+Supplier Footprint
+SPDIP-28
+JLCPCB Part Class
+Extended Part
+Datasheet
+https://item.szlcsc.com/datasheet/MCP23017-E%252FSP/676855.html
+Supplier
+LCSC
+Add into BOM
+yes
+Convert to PCB
+yes
+3D Model Title
+DIP-28_L34.6-W7.3-H4.6-P2.54-LS10.2-BL
+Interface
+I2C
+Interrupt Output
+Interrupt Output
+Output Type
+-
+Voltage - Supply
+1.8V~5.5V
+Current - Output Low(IOL)
+-
+Current - Output High(IOH)
+-
+Clock Frequency
+1.7MHz
+Operating Temperature
+-40℃~+125℃
+Description
+Interface:I2C Interrupt Output:Interrupt Output Output Type:- Voltage - Supply:1.8V~5.5V Voltage - Supply:1.8V~5.5V Current - Output Low(IOL):- Current - Output High(IOH):- Clock Frequency:1.7MHz Operating Temperature:-40℃~+125℃ Operating Temperature:-40℃
+Designator
+U1
+Name
+MCP23017-E/SP
+Device
+MCP23017-E/SP
+Reuse Block
+
+Group ID
+
+Channel ID
+
+Unique ID
+gge2
+
+*
+]
+[
+DESIGNATOR
+P4
+FOOTPRINT
+IDC-TH_10P-P2.54_C5665
+PARTTYPE
+2.54-2*5P简牛
+DESCRIPTION
+Connector Type:IDC Header Pitch:2.54mm Number of Positions or Pins:2x5P Current Rating:1A Holder Type:Through Hole Row Spacing:2.54mm Number of Rows:2 Number of PINs Per Row:5 Contact Material:Brass Contact Plating:Gold Operating Temperature:-55℃~+105℃ Op
+Component Kind
+Standard
+Symbol
+HDR-IDC-2.54-2X5P
+LCSC Part Name
+2.54mm 2x5P 排数:2 每排P数:5
+Supplier Part
+C5665
+Manufacturer
+BOOMELE(博穆精密)
+Manufacturer Part
+2.54-2*5P简牛
+Supplier Footprint
+插件,P=2.54mm
+JLCPCB Part Class
+Extended Part
+Datasheet
+https://item.szlcsc.com/datasheet/2.54-2*5P%25E7%25AE%2580%25E7%2589%259B/6118.html
+Supplier
+LCSC
+Add into BOM
+yes
+Convert to PCB
+yes
+3D Model Title
+HDR-IDC-2.54-2X5P
+Connector Type
+IDC Header
+Pitch
+2.54mm
+Number of Positions or Pins
+2x5P
+Current Rating
+1A
+Holder Type
+Through Hole
+Row Spacing
+2.54mm
+Number of Rows
+2
+Number of PINs Per Row
+5
+Contact Material
+Brass
+Contact Plating
+Gold
+Operating Temperature
+-55℃~+105℃
+Color
+Black
+Description
+Connector Type:IDC Header Pitch:2.54mm Number of Positions or Pins:2x5P Current Rating:1A Holder Type:Through Hole Row Spacing:2.54mm Number of Rows:2 Number of PINs Per Row:5 Contact Material:Brass Contact Plating:Gold Operating Temperature:-55℃~+105℃ Op
+Designator
+P4
+Name
+2.54-2*5P简牛
+Device
+2.54-2*5P简牛
+Reuse Block
+
+Group ID
+
+Channel ID
+
+Unique ID
+gge11
+
+*
+]
+[
+DESIGNATOR
+L1
+FOOTPRINT
+SW-TH_6P-L12.0-W12.0-P5.00-LS12.1-TL_C9900040374
+PARTTYPE
+TS1273CJ-R
+DESCRIPTION
+Operating Force:2.5N Mounting Type:Through Hole Length:12mm Width:12mm Switch Height:7.3mm Contact Current:50mA Voltage Rating:12V With Lamp:Red Life:100,000 Cycles
+Component Kind
+Standard
+LCSC Part Name
+带灯开关 红色12.0mm*12.0mm
+Supplier Part
+C18185601
+Manufacturer
+SHOU HAN(首韩)
+Manufacturer Part
+TS1273CJ-R
+Supplier Footprint
+插件-6P,12x12mm
+JLCPCB Part Class
+Extended Part
+Datasheet
+https://item.szlcsc.com/datasheet/TS1273CJ-R/19332231.html
+Supplier
+LCSC
+Add into BOM
+yes
+Convert to PCB
+yes
+3D Model Title
+SW-TH_6P-L12.0-W12.0-P5.00-LS12.1-TL_C9900040374
+Operating Force
+2.5N
+Mounting Type
+Through Hole
+Length
+12mm
+Width
+12mm
+Switch Height
+7.3mm
+Contact Current
+50mA
+Voltage Rating
+12V
+With Lamp
+Red
+Life
+100,000 Cycles
+Description
+Operating Force:2.5N Mounting Type:Through Hole Length:12mm Width:12mm Switch Height:7.3mm Contact Current:50mA Voltage Rating:12V With Lamp:Red Life:100,000 Cycles
+Symbol
+TS1273CJ-R
+Designator
+L1
+Name
+TS1273CJ-R
+Device
+TS1273CJ-R
+Reuse Block
+
+Group ID
+
+Channel ID
+
+Unique ID
+gge12
+
+*
+]
+[
+DESIGNATOR
+R1
+FOOTPRINT
+RES-TH_BD5.5-L15.0-P19.00-D0.8
+PARTTYPE
+MFR03SF100KA10
+DESCRIPTION
+Type:Metal Film Resistor Resistance:1Ω Tolerance:±1% Tolerance:±1% Voltage-Supply(Max):500V Power(Watts):3W Temperature Coefficient:±50ppm/℃ Temperature Coefficient:±50ppm/℃
+Component Kind
+Standard
+LCSC Part Name
+1Ω ±1% 3W 金属膜电阻 小体积,铜脚，圆柱状直插
+Manufacturer
+UNI-ROYAL(厚声)
+Manufacturer Part
+MFR03SF100KA10
+Supplier Footprint
+插件,D5xL15.5mm
+JLCPCB Part Class
+Extended Part
+Datasheet
+https://item.szlcsc.com/datasheet/MFR03SF100KA10/114902.html
+Supplier
+LCSC
+Add into BOM
+yes
+Convert to PCB
+yes
+3D Model Title
+RES-TH_BD5.5-L15.0-P19.00-D0.8
+Type
+Metal Film Resistor
+Tolerance
+±1%
+Voltage-Supply(Max)
+500V
+Power(Watts)
+3W
+Temperature Coefficient
+±50ppm/℃
+Description
+Type:Metal Film Resistor Resistance:1Ω Tolerance:±1% Tolerance:±1% Voltage-Supply(Max):500V Power(Watts):3W Temperature Coefficient:±50ppm/℃ Temperature Coefficient:±50ppm/℃
+Symbol
+MFR03SF100KA10
+Designator
+R1
+Supplier Part
+
+Value
+333
+Name
+333
+Device
+MFR03SF100KA10
+Reuse Block
+
+Group ID
+
+Channel ID
+
+Unique ID
+gge13
+
+*
+]
+[
+DESIGNATOR
+R2
+FOOTPRINT
+RES-TH_BD5.5-L15.0-P19.00-D0.8
+PARTTYPE
+MFR03SF100KA10
+DESCRIPTION
+Type:Metal Film Resistor Resistance:1Ω Tolerance:±1% Tolerance:±1% Voltage-Supply(Max):500V Power(Watts):3W Temperature Coefficient:±50ppm/℃ Temperature Coefficient:±50ppm/℃
+Component Kind
+Standard
+LCSC Part Name
+1Ω ±1% 3W 金属膜电阻 小体积,铜脚，圆柱状直插
+Manufacturer
+UNI-ROYAL(厚声)
+Manufacturer Part
+MFR03SF100KA10
+Supplier Footprint
+插件,D5xL15.5mm
+JLCPCB Part Class
+Extended Part
+Datasheet
+https://item.szlcsc.com/datasheet/MFR03SF100KA10/114902.html
+Supplier
+LCSC
+Add into BOM
+yes
+Convert to PCB
+yes
+3D Model Title
+RES-TH_BD5.5-L15.0-P19.00-D0.8
+Type
+Metal Film Resistor
+Tolerance
+±1%
+Voltage-Supply(Max)
+500V
+Power(Watts)
+3W
+Temperature Coefficient
+±50ppm/℃
+Description
+Type:Metal Film Resistor Resistance:1Ω Tolerance:±1% Tolerance:±1% Voltage-Supply(Max):500V Power(Watts):3W Temperature Coefficient:±50ppm/℃ Temperature Coefficient:±50ppm/℃
+Symbol
+MFR03SF100KA10
+Designator
+R2
+Supplier Part
+
+Value
+10K
+Name
+10K
+Device
+MFR03SF100KA10
+Reuse Block
+
+Group ID
+
+Channel ID
+
+Unique ID
+gge14
+
+*
+]
+[
+DESIGNATOR
+L2
+FOOTPRINT
+SW-TH_6P-L12.0-W12.0-P5.00-LS12.1-TL_C9900040374
+PARTTYPE
+TS1273CJ-R
+DESCRIPTION
+Operating Force:2.5N Mounting Type:Through Hole Length:12mm Width:12mm Switch Height:7.3mm Contact Current:50mA Voltage Rating:12V With Lamp:Red Life:100,000 Cycles
+Component Kind
+Standard
+LCSC Part Name
+带灯开关 红色12.0mm*12.0mm
+Supplier Part
+C18185601
+Manufacturer
+SHOU HAN(首韩)
+Manufacturer Part
+TS1273CJ-R
+Supplier Footprint
+插件-6P,12x12mm
+JLCPCB Part Class
+Extended Part
+Datasheet
+https://item.szlcsc.com/datasheet/TS1273CJ-R/19332231.html
+Supplier
+LCSC
+Add into BOM
+yes
+Convert to PCB
+yes
+3D Model Title
+SW-TH_6P-L12.0-W12.0-P5.00-LS12.1-TL_C9900040374
+Operating Force
+2.5N
+Mounting Type
+Through Hole
+Length
+12mm
+Width
+12mm
+Switch Height
+7.3mm
+Contact Current
+50mA
+Voltage Rating
+12V
+With Lamp
+Red
+Life
+100,000 Cycles
+Description
+Operating Force:2.5N Mounting Type:Through Hole Length:12mm Width:12mm Switch Height:7.3mm Contact Current:50mA Voltage Rating:12V With Lamp:Red Life:100,000 Cycles
+Symbol
+TS1273CJ-R
+Designator
+L2
+Name
+TS1273CJ-R
+Device
+TS1273CJ-R
+Reuse Block
+
+Group ID
+
+Channel ID
+
+Unique ID
+gge12_1
+
+*
+]
+[
+DESIGNATOR
+R3
+FOOTPRINT
+RES-TH_BD5.5-L15.0-P19.00-D0.8
+PARTTYPE
+MFR03SF100KA10
+DESCRIPTION
+Type:Metal Film Resistor Resistance:1Ω Tolerance:±1% Tolerance:±1% Voltage-Supply(Max):500V Power(Watts):3W Temperature Coefficient:±50ppm/℃ Temperature Coefficient:±50ppm/℃
+Component Kind
+Standard
+LCSC Part Name
+1Ω ±1% 3W 金属膜电阻 小体积,铜脚，圆柱状直插
+Manufacturer
+UNI-ROYAL(厚声)
+Manufacturer Part
+MFR03SF100KA10
+Supplier Footprint
+插件,D5xL15.5mm
+JLCPCB Part Class
+Extended Part
+Datasheet
+https://item.szlcsc.com/datasheet/MFR03SF100KA10/114902.html
+Supplier
+LCSC
+Add into BOM
+yes
+Convert to PCB
+yes
+3D Model Title
+RES-TH_BD5.5-L15.0-P19.00-D0.8
+Type
+Metal Film Resistor
+Tolerance
+±1%
+Voltage-Supply(Max)
+500V
+Power(Watts)
+3W
+Temperature Coefficient
+±50ppm/℃
+Description
+Type:Metal Film Resistor Resistance:1Ω Tolerance:±1% Tolerance:±1% Voltage-Supply(Max):500V Power(Watts):3W Temperature Coefficient:±50ppm/℃ Temperature Coefficient:±50ppm/℃
+Symbol
+MFR03SF100KA10
+Designator
+R3
+Supplier Part
+
+Value
+333
+Name
+333
+Device
+MFR03SF100KA10
+Reuse Block
+
+Group ID
+
+Channel ID
+
+Unique ID
+gge15
+
+*
+]
+[
+DESIGNATOR
+R4
+FOOTPRINT
+RES-TH_BD5.5-L15.0-P19.00-D0.8
+PARTTYPE
+MFR03SF100KA10
+DESCRIPTION
+Type:Metal Film Resistor Resistance:1Ω Tolerance:±1% Tolerance:±1% Voltage-Supply(Max):500V Power(Watts):3W Temperature Coefficient:±50ppm/℃ Temperature Coefficient:±50ppm/℃
+Component Kind
+Standard
+LCSC Part Name
+1Ω ±1% 3W 金属膜电阻 小体积,铜脚，圆柱状直插
+Manufacturer
+UNI-ROYAL(厚声)
+Manufacturer Part
+MFR03SF100KA10
+Supplier Footprint
+插件,D5xL15.5mm
+JLCPCB Part Class
+Extended Part
+Datasheet
+https://item.szlcsc.com/datasheet/MFR03SF100KA10/114902.html
+Supplier
+LCSC
+Add into BOM
+yes
+Convert to PCB
+yes
+3D Model Title
+RES-TH_BD5.5-L15.0-P19.00-D0.8
+Type
+Metal Film Resistor
+Tolerance
+±1%
+Voltage-Supply(Max)
+500V
+Power(Watts)
+3W
+Temperature Coefficient
+±50ppm/℃
+Description
+Type:Metal Film Resistor Resistance:1Ω Tolerance:±1% Tolerance:±1% Voltage-Supply(Max):500V Power(Watts):3W Temperature Coefficient:±50ppm/℃ Temperature Coefficient:±50ppm/℃
+Symbol
+MFR03SF100KA10
+Designator
+R4
+Supplier Part
+
+Value
+10K
+Name
+10K
+Device
+MFR03SF100KA10
+Reuse Block
+
+Group ID
+
+Channel ID
+
+Unique ID
+gge16
+
+*
+]
+[
+DESIGNATOR
+L3
+FOOTPRINT
+SW-TH_6P-L12.0-W12.0-P5.00-LS12.1-TL_C9900040374
+PARTTYPE
+TS1273CJ-R
+DESCRIPTION
+Operating Force:2.5N Mounting Type:Through Hole Length:12mm Width:12mm Switch Height:7.3mm Contact Current:50mA Voltage Rating:12V With Lamp:Red Life:100,000 Cycles
+Component Kind
+Standard
+LCSC Part Name
+带灯开关 红色12.0mm*12.0mm
+Supplier Part
+C18185601
+Manufacturer
+SHOU HAN(首韩)
+Manufacturer Part
+TS1273CJ-R
+Supplier Footprint
+插件-6P,12x12mm
+JLCPCB Part Class
+Extended Part
+Datasheet
+https://item.szlcsc.com/datasheet/TS1273CJ-R/19332231.html
+Supplier
+LCSC
+Add into BOM
+yes
+Convert to PCB
+yes
+3D Model Title
+SW-TH_6P-L12.0-W12.0-P5.00-LS12.1-TL_C9900040374
+Operating Force
+2.5N
+Mounting Type
+Through Hole
+Length
+12mm
+Width
+12mm
+Switch Height
+7.3mm
+Contact Current
+50mA
+Voltage Rating
+12V
+With Lamp
+Red
+Life
+100,000 Cycles
+Description
+Operating Force:2.5N Mounting Type:Through Hole Length:12mm Width:12mm Switch Height:7.3mm Contact Current:50mA Voltage Rating:12V With Lamp:Red Life:100,000 Cycles
+Symbol
+TS1273CJ-R
+Designator
+L3
+Name
+TS1273CJ-R
+Device
+TS1273CJ-R
+Reuse Block
+
+Group ID
+
+Channel ID
+
+Unique ID
+gge12_2
+
+*
+]
+[
+DESIGNATOR
+R5
+FOOTPRINT
+RES-TH_BD5.5-L15.0-P19.00-D0.8
+PARTTYPE
+MFR03SF100KA10
+DESCRIPTION
+Type:Metal Film Resistor Resistance:1Ω Tolerance:±1% Tolerance:±1% Voltage-Supply(Max):500V Power(Watts):3W Temperature Coefficient:±50ppm/℃ Temperature Coefficient:±50ppm/℃
+Component Kind
+Standard
+LCSC Part Name
+1Ω ±1% 3W 金属膜电阻 小体积,铜脚，圆柱状直插
+Manufacturer
+UNI-ROYAL(厚声)
+Manufacturer Part
+MFR03SF100KA10
+Supplier Footprint
+插件,D5xL15.5mm
+JLCPCB Part Class
+Extended Part
+Datasheet
+https://item.szlcsc.com/datasheet/MFR03SF100KA10/114902.html
+Supplier
+LCSC
+Add into BOM
+yes
+Convert to PCB
+yes
+3D Model Title
+RES-TH_BD5.5-L15.0-P19.00-D0.8
+Type
+Metal Film Resistor
+Tolerance
+±1%
+Voltage-Supply(Max)
+500V
+Power(Watts)
+3W
+Temperature Coefficient
+±50ppm/℃
+Description
+Type:Metal Film Resistor Resistance:1Ω Tolerance:±1% Tolerance:±1% Voltage-Supply(Max):500V Power(Watts):3W Temperature Coefficient:±50ppm/℃ Temperature Coefficient:±50ppm/℃
+Symbol
+MFR03SF100KA10
+Designator
+R5
+Supplier Part
+
+Value
+333
+Name
+333
+Device
+MFR03SF100KA10
+Reuse Block
+
+Group ID
+
+Channel ID
+
+Unique ID
+gge17
+
+*
+]
+[
+DESIGNATOR
+R6
+FOOTPRINT
+RES-TH_BD5.5-L15.0-P19.00-D0.8
+PARTTYPE
+MFR03SF100KA10
+DESCRIPTION
+Type:Metal Film Resistor Resistance:1Ω Tolerance:±1% Tolerance:±1% Voltage-Supply(Max):500V Power(Watts):3W Temperature Coefficient:±50ppm/℃ Temperature Coefficient:±50ppm/℃
+Component Kind
+Standard
+LCSC Part Name
+1Ω ±1% 3W 金属膜电阻 小体积,铜脚，圆柱状直插
+Manufacturer
+UNI-ROYAL(厚声)
+Manufacturer Part
+MFR03SF100KA10
+Supplier Footprint
+插件,D5xL15.5mm
+JLCPCB Part Class
+Extended Part
+Datasheet
+https://item.szlcsc.com/datasheet/MFR03SF100KA10/114902.html
+Supplier
+LCSC
+Add into BOM
+yes
+Convert to PCB
+yes
+3D Model Title
+RES-TH_BD5.5-L15.0-P19.00-D0.8
+Type
+Metal Film Resistor
+Tolerance
+±1%
+Voltage-Supply(Max)
+500V
+Power(Watts)
+3W
+Temperature Coefficient
+±50ppm/℃
+Description
+Type:Metal Film Resistor Resistance:1Ω Tolerance:±1% Tolerance:±1% Voltage-Supply(Max):500V Power(Watts):3W Temperature Coefficient:±50ppm/℃ Temperature Coefficient:±50ppm/℃
+Symbol
+MFR03SF100KA10
+Designator
+R6
+Supplier Part
+
+Value
+10K
+Name
+10K
+Device
+MFR03SF100KA10
+Reuse Block
+
+Group ID
+
+Channel ID
+
+Unique ID
+gge18
+
+*
+]
+[
+DESIGNATOR
+L4
+FOOTPRINT
+SW-TH_6P-L12.0-W12.0-P5.00-LS12.1-TL_C9900040374
+PARTTYPE
+TS1273CJ-R
+DESCRIPTION
+Operating Force:2.5N Mounting Type:Through Hole Length:12mm Width:12mm Switch Height:7.3mm Contact Current:50mA Voltage Rating:12V With Lamp:Red Life:100,000 Cycles
+Component Kind
+Standard
+LCSC Part Name
+带灯开关 红色12.0mm*12.0mm
+Supplier Part
+C18185601
+Manufacturer
+SHOU HAN(首韩)
+Manufacturer Part
+TS1273CJ-R
+Supplier Footprint
+插件-6P,12x12mm
+JLCPCB Part Class
+Extended Part
+Datasheet
+https://item.szlcsc.com/datasheet/TS1273CJ-R/19332231.html
+Supplier
+LCSC
+Add into BOM
+yes
+Convert to PCB
+yes
+3D Model Title
+SW-TH_6P-L12.0-W12.0-P5.00-LS12.1-TL_C9900040374
+Operating Force
+2.5N
+Mounting Type
+Through Hole
+Length
+12mm
+Width
+12mm
+Switch Height
+7.3mm
+Contact Current
+50mA
+Voltage Rating
+12V
+With Lamp
+Red
+Life
+100,000 Cycles
+Description
+Operating Force:2.5N Mounting Type:Through Hole Length:12mm Width:12mm Switch Height:7.3mm Contact Current:50mA Voltage Rating:12V With Lamp:Red Life:100,000 Cycles
+Symbol
+TS1273CJ-R
+Designator
+L4
+Name
+TS1273CJ-R
+Device
+TS1273CJ-R
+Reuse Block
+
+Group ID
+
+Channel ID
+
+Unique ID
+gge12_3
+
+*
+]
+[
+DESIGNATOR
+R7
+FOOTPRINT
+RES-TH_BD5.5-L15.0-P19.00-D0.8
+PARTTYPE
+MFR03SF100KA10
+DESCRIPTION
+Type:Metal Film Resistor Resistance:1Ω Tolerance:±1% Tolerance:±1% Voltage-Supply(Max):500V Power(Watts):3W Temperature Coefficient:±50ppm/℃ Temperature Coefficient:±50ppm/℃
+Component Kind
+Standard
+LCSC Part Name
+1Ω ±1% 3W 金属膜电阻 小体积,铜脚，圆柱状直插
+Manufacturer
+UNI-ROYAL(厚声)
+Manufacturer Part
+MFR03SF100KA10
+Supplier Footprint
+插件,D5xL15.5mm
+JLCPCB Part Class
+Extended Part
+Datasheet
+https://item.szlcsc.com/datasheet/MFR03SF100KA10/114902.html
+Supplier
+LCSC
+Add into BOM
+yes
+Convert to PCB
+yes
+3D Model Title
+RES-TH_BD5.5-L15.0-P19.00-D0.8
+Type
+Metal Film Resistor
+Tolerance
+±1%
+Voltage-Supply(Max)
+500V
+Power(Watts)
+3W
+Temperature Coefficient
+±50ppm/℃
+Description
+Type:Metal Film Resistor Resistance:1Ω Tolerance:±1% Tolerance:±1% Voltage-Supply(Max):500V Power(Watts):3W Temperature Coefficient:±50ppm/℃ Temperature Coefficient:±50ppm/℃
+Symbol
+MFR03SF100KA10
+Designator
+R7
+Supplier Part
+
+Value
+333
+Name
+333
+Device
+MFR03SF100KA10
+Reuse Block
+
+Group ID
+
+Channel ID
+
+Unique ID
+gge19
+
+*
+]
+[
+DESIGNATOR
+R8
+FOOTPRINT
+RES-TH_BD5.5-L15.0-P19.00-D0.8
+PARTTYPE
+MFR03SF100KA10
+DESCRIPTION
+Type:Metal Film Resistor Resistance:1Ω Tolerance:±1% Tolerance:±1% Voltage-Supply(Max):500V Power(Watts):3W Temperature Coefficient:±50ppm/℃ Temperature Coefficient:±50ppm/℃
+Component Kind
+Standard
+LCSC Part Name
+1Ω ±1% 3W 金属膜电阻 小体积,铜脚，圆柱状直插
+Manufacturer
+UNI-ROYAL(厚声)
+Manufacturer Part
+MFR03SF100KA10
+Supplier Footprint
+插件,D5xL15.5mm
+JLCPCB Part Class
+Extended Part
+Datasheet
+https://item.szlcsc.com/datasheet/MFR03SF100KA10/114902.html
+Supplier
+LCSC
+Add into BOM
+yes
+Convert to PCB
+yes
+3D Model Title
+RES-TH_BD5.5-L15.0-P19.00-D0.8
+Type
+Metal Film Resistor
+Tolerance
+±1%
+Voltage-Supply(Max)
+500V
+Power(Watts)
+3W
+Temperature Coefficient
+±50ppm/℃
+Description
+Type:Metal Film Resistor Resistance:1Ω Tolerance:±1% Tolerance:±1% Voltage-Supply(Max):500V Power(Watts):3W Temperature Coefficient:±50ppm/℃ Temperature Coefficient:±50ppm/℃
+Symbol
+MFR03SF100KA10
+Designator
+R8
+Supplier Part
+
+Value
+10K
+Name
+10K
+Device
+MFR03SF100KA10
+Reuse Block
+
+Group ID
+
+Channel ID
+
+Unique ID
+gge20
+
+*
+]
+[
+DESIGNATOR
+L5
+FOOTPRINT
+SW-TH_6P-L12.0-W12.0-P5.00-LS12.1-TL_C9900040374
+PARTTYPE
+TS1273CJ-R
+DESCRIPTION
+Operating Force:2.5N Mounting Type:Through Hole Length:12mm Width:12mm Switch Height:7.3mm Contact Current:50mA Voltage Rating:12V With Lamp:Red Life:100,000 Cycles
+Component Kind
+Standard
+LCSC Part Name
+带灯开关 红色12.0mm*12.0mm
+Supplier Part
+C18185601
+Manufacturer
+SHOU HAN(首韩)
+Manufacturer Part
+TS1273CJ-R
+Supplier Footprint
+插件-6P,12x12mm
+JLCPCB Part Class
+Extended Part
+Datasheet
+https://item.szlcsc.com/datasheet/TS1273CJ-R/19332231.html
+Supplier
+LCSC
+Add into BOM
+yes
+Convert to PCB
+yes
+3D Model Title
+SW-TH_6P-L12.0-W12.0-P5.00-LS12.1-TL_C9900040374
+Operating Force
+2.5N
+Mounting Type
+Through Hole
+Length
+12mm
+Width
+12mm
+Switch Height
+7.3mm
+Contact Current
+50mA
+Voltage Rating
+12V
+With Lamp
+Red
+Life
+100,000 Cycles
+Description
+Operating Force:2.5N Mounting Type:Through Hole Length:12mm Width:12mm Switch Height:7.3mm Contact Current:50mA Voltage Rating:12V With Lamp:Red Life:100,000 Cycles
+Symbol
+TS1273CJ-R
+Designator
+L5
+Name
+TS1273CJ-R
+Device
+TS1273CJ-R
+Reuse Block
+
+Group ID
+
+Channel ID
+
+Unique ID
+gge12_4
+
+*
+]
+[
+DESIGNATOR
+R9
+FOOTPRINT
+RES-TH_BD5.5-L15.0-P19.00-D0.8
+PARTTYPE
+MFR03SF100KA10
+DESCRIPTION
+Type:Metal Film Resistor Resistance:1Ω Tolerance:±1% Tolerance:±1% Voltage-Supply(Max):500V Power(Watts):3W Temperature Coefficient:±50ppm/℃ Temperature Coefficient:±50ppm/℃
+Component Kind
+Standard
+LCSC Part Name
+1Ω ±1% 3W 金属膜电阻 小体积,铜脚，圆柱状直插
+Manufacturer
+UNI-ROYAL(厚声)
+Manufacturer Part
+MFR03SF100KA10
+Supplier Footprint
+插件,D5xL15.5mm
+JLCPCB Part Class
+Extended Part
+Datasheet
+https://item.szlcsc.com/datasheet/MFR03SF100KA10/114902.html
+Supplier
+LCSC
+Add into BOM
+yes
+Convert to PCB
+yes
+3D Model Title
+RES-TH_BD5.5-L15.0-P19.00-D0.8
+Type
+Metal Film Resistor
+Tolerance
+±1%
+Voltage-Supply(Max)
+500V
+Power(Watts)
+3W
+Temperature Coefficient
+±50ppm/℃
+Description
+Type:Metal Film Resistor Resistance:1Ω Tolerance:±1% Tolerance:±1% Voltage-Supply(Max):500V Power(Watts):3W Temperature Coefficient:±50ppm/℃ Temperature Coefficient:±50ppm/℃
+Symbol
+MFR03SF100KA10
+Designator
+R9
+Supplier Part
+
+Value
+333
+Name
+333
+Device
+MFR03SF100KA10
+Reuse Block
+
+Group ID
+
+Channel ID
+
+Unique ID
+gge21
+
+*
+]
+[
+DESIGNATOR
+R10
+FOOTPRINT
+RES-TH_BD5.5-L15.0-P19.00-D0.8
+PARTTYPE
+MFR03SF100KA10
+DESCRIPTION
+Type:Metal Film Resistor Resistance:1Ω Tolerance:±1% Tolerance:±1% Voltage-Supply(Max):500V Power(Watts):3W Temperature Coefficient:±50ppm/℃ Temperature Coefficient:±50ppm/℃
+Component Kind
+Standard
+LCSC Part Name
+1Ω ±1% 3W 金属膜电阻 小体积,铜脚，圆柱状直插
+Manufacturer
+UNI-ROYAL(厚声)
+Manufacturer Part
+MFR03SF100KA10
+Supplier Footprint
+插件,D5xL15.5mm
+JLCPCB Part Class
+Extended Part
+Datasheet
+https://item.szlcsc.com/datasheet/MFR03SF100KA10/114902.html
+Supplier
+LCSC
+Add into BOM
+yes
+Convert to PCB
+yes
+3D Model Title
+RES-TH_BD5.5-L15.0-P19.00-D0.8
+Type
+Metal Film Resistor
+Tolerance
+±1%
+Voltage-Supply(Max)
+500V
+Power(Watts)
+3W
+Temperature Coefficient
+±50ppm/℃
+Description
+Type:Metal Film Resistor Resistance:1Ω Tolerance:±1% Tolerance:±1% Voltage-Supply(Max):500V Power(Watts):3W Temperature Coefficient:±50ppm/℃ Temperature Coefficient:±50ppm/℃
+Symbol
+MFR03SF100KA10
+Designator
+R10
+Supplier Part
+
+Value
+10K
+Name
+10K
+Device
+MFR03SF100KA10
+Reuse Block
+
+Group ID
+
+Channel ID
+
+Unique ID
+gge22
+
+*
+]
+[
+DESIGNATOR
+L6
+FOOTPRINT
+SW-TH_6P-L12.0-W12.0-P5.00-LS12.1-TL_C9900040374
+PARTTYPE
+TS1273CJ-R
+DESCRIPTION
+Operating Force:2.5N Mounting Type:Through Hole Length:12mm Width:12mm Switch Height:7.3mm Contact Current:50mA Voltage Rating:12V With Lamp:Red Life:100,000 Cycles
+Component Kind
+Standard
+LCSC Part Name
+带灯开关 红色12.0mm*12.0mm
+Supplier Part
+C18185601
+Manufacturer
+SHOU HAN(首韩)
+Manufacturer Part
+TS1273CJ-R
+Supplier Footprint
+插件-6P,12x12mm
+JLCPCB Part Class
+Extended Part
+Datasheet
+https://item.szlcsc.com/datasheet/TS1273CJ-R/19332231.html
+Supplier
+LCSC
+Add into BOM
+yes
+Convert to PCB
+yes
+3D Model Title
+SW-TH_6P-L12.0-W12.0-P5.00-LS12.1-TL_C9900040374
+Operating Force
+2.5N
+Mounting Type
+Through Hole
+Length
+12mm
+Width
+12mm
+Switch Height
+7.3mm
+Contact Current
+50mA
+Voltage Rating
+12V
+With Lamp
+Red
+Life
+100,000 Cycles
+Description
+Operating Force:2.5N Mounting Type:Through Hole Length:12mm Width:12mm Switch Height:7.3mm Contact Current:50mA Voltage Rating:12V With Lamp:Red Life:100,000 Cycles
+Symbol
+TS1273CJ-R
+Designator
+L6
+Name
+TS1273CJ-R
+Device
+TS1273CJ-R
+Reuse Block
+
+Group ID
+
+Channel ID
+
+Unique ID
+gge12_5
+
+*
+]
+[
+DESIGNATOR
+R11
+FOOTPRINT
+RES-TH_BD5.5-L15.0-P19.00-D0.8
+PARTTYPE
+MFR03SF100KA10
+DESCRIPTION
+Type:Metal Film Resistor Resistance:1Ω Tolerance:±1% Tolerance:±1% Voltage-Supply(Max):500V Power(Watts):3W Temperature Coefficient:±50ppm/℃ Temperature Coefficient:±50ppm/℃
+Component Kind
+Standard
+LCSC Part Name
+1Ω ±1% 3W 金属膜电阻 小体积,铜脚，圆柱状直插
+Manufacturer
+UNI-ROYAL(厚声)
+Manufacturer Part
+MFR03SF100KA10
+Supplier Footprint
+插件,D5xL15.5mm
+JLCPCB Part Class
+Extended Part
+Datasheet
+https://item.szlcsc.com/datasheet/MFR03SF100KA10/114902.html
+Supplier
+LCSC
+Add into BOM
+yes
+Convert to PCB
+yes
+3D Model Title
+RES-TH_BD5.5-L15.0-P19.00-D0.8
+Type
+Metal Film Resistor
+Tolerance
+±1%
+Voltage-Supply(Max)
+500V
+Power(Watts)
+3W
+Temperature Coefficient
+±50ppm/℃
+Description
+Type:Metal Film Resistor Resistance:1Ω Tolerance:±1% Tolerance:±1% Voltage-Supply(Max):500V Power(Watts):3W Temperature Coefficient:±50ppm/℃ Temperature Coefficient:±50ppm/℃
+Symbol
+MFR03SF100KA10
+Designator
+R11
+Supplier Part
+
+Value
+333
+Name
+333
+Device
+MFR03SF100KA10
+Reuse Block
+
+Group ID
+
+Channel ID
+
+Unique ID
+gge23
+
+*
+]
+[
+DESIGNATOR
+R12
+FOOTPRINT
+RES-TH_BD5.5-L15.0-P19.00-D0.8
+PARTTYPE
+MFR03SF100KA10
+DESCRIPTION
+Type:Metal Film Resistor Resistance:1Ω Tolerance:±1% Tolerance:±1% Voltage-Supply(Max):500V Power(Watts):3W Temperature Coefficient:±50ppm/℃ Temperature Coefficient:±50ppm/℃
+Component Kind
+Standard
+LCSC Part Name
+1Ω ±1% 3W 金属膜电阻 小体积,铜脚，圆柱状直插
+Manufacturer
+UNI-ROYAL(厚声)
+Manufacturer Part
+MFR03SF100KA10
+Supplier Footprint
+插件,D5xL15.5mm
+JLCPCB Part Class
+Extended Part
+Datasheet
+https://item.szlcsc.com/datasheet/MFR03SF100KA10/114902.html
+Supplier
+LCSC
+Add into BOM
+yes
+Convert to PCB
+yes
+3D Model Title
+RES-TH_BD5.5-L15.0-P19.00-D0.8
+Type
+Metal Film Resistor
+Tolerance
+±1%
+Voltage-Supply(Max)
+500V
+Power(Watts)
+3W
+Temperature Coefficient
+±50ppm/℃
+Description
+Type:Metal Film Resistor Resistance:1Ω Tolerance:±1% Tolerance:±1% Voltage-Supply(Max):500V Power(Watts):3W Temperature Coefficient:±50ppm/℃ Temperature Coefficient:±50ppm/℃
+Symbol
+MFR03SF100KA10
+Designator
+R12
+Supplier Part
+
+Value
+10K
+Name
+10K
+Device
+MFR03SF100KA10
+Reuse Block
+
+Group ID
+
+Channel ID
+
+Unique ID
+gge24
+
+*
+]
+[
+DESIGNATOR
+L7
+FOOTPRINT
+SW-TH_6P-L12.0-W12.0-P5.00-LS12.1-TL_C9900040374
+PARTTYPE
+TS1273CJ-R
+DESCRIPTION
+Operating Force:2.5N Mounting Type:Through Hole Length:12mm Width:12mm Switch Height:7.3mm Contact Current:50mA Voltage Rating:12V With Lamp:Red Life:100,000 Cycles
+Component Kind
+Standard
+LCSC Part Name
+带灯开关 红色12.0mm*12.0mm
+Supplier Part
+C18185601
+Manufacturer
+SHOU HAN(首韩)
+Manufacturer Part
+TS1273CJ-R
+Supplier Footprint
+插件-6P,12x12mm
+JLCPCB Part Class
+Extended Part
+Datasheet
+https://item.szlcsc.com/datasheet/TS1273CJ-R/19332231.html
+Supplier
+LCSC
+Add into BOM
+yes
+Convert to PCB
+yes
+3D Model Title
+SW-TH_6P-L12.0-W12.0-P5.00-LS12.1-TL_C9900040374
+Operating Force
+2.5N
+Mounting Type
+Through Hole
+Length
+12mm
+Width
+12mm
+Switch Height
+7.3mm
+Contact Current
+50mA
+Voltage Rating
+12V
+With Lamp
+Red
+Life
+100,000 Cycles
+Description
+Operating Force:2.5N Mounting Type:Through Hole Length:12mm Width:12mm Switch Height:7.3mm Contact Current:50mA Voltage Rating:12V With Lamp:Red Life:100,000 Cycles
+Symbol
+TS1273CJ-R
+Designator
+L7
+Name
+TS1273CJ-R
+Device
+TS1273CJ-R
+Reuse Block
+
+Group ID
+
+Channel ID
+
+Unique ID
+gge12_6
+
+*
+]
+[
+DESIGNATOR
+R13
+FOOTPRINT
+RES-TH_BD5.5-L15.0-P19.00-D0.8
+PARTTYPE
+MFR03SF100KA10
+DESCRIPTION
+Type:Metal Film Resistor Resistance:1Ω Tolerance:±1% Tolerance:±1% Voltage-Supply(Max):500V Power(Watts):3W Temperature Coefficient:±50ppm/℃ Temperature Coefficient:±50ppm/℃
+Component Kind
+Standard
+LCSC Part Name
+1Ω ±1% 3W 金属膜电阻 小体积,铜脚，圆柱状直插
+Manufacturer
+UNI-ROYAL(厚声)
+Manufacturer Part
+MFR03SF100KA10
+Supplier Footprint
+插件,D5xL15.5mm
+JLCPCB Part Class
+Extended Part
+Datasheet
+https://item.szlcsc.com/datasheet/MFR03SF100KA10/114902.html
+Supplier
+LCSC
+Add into BOM
+yes
+Convert to PCB
+yes
+3D Model Title
+RES-TH_BD5.5-L15.0-P19.00-D0.8
+Type
+Metal Film Resistor
+Tolerance
+±1%
+Voltage-Supply(Max)
+500V
+Power(Watts)
+3W
+Temperature Coefficient
+±50ppm/℃
+Description
+Type:Metal Film Resistor Resistance:1Ω Tolerance:±1% Tolerance:±1% Voltage-Supply(Max):500V Power(Watts):3W Temperature Coefficient:±50ppm/℃ Temperature Coefficient:±50ppm/℃
+Symbol
+MFR03SF100KA10
+Designator
+R13
+Supplier Part
+
+Value
+333
+Name
+333
+Device
+MFR03SF100KA10
+Reuse Block
+
+Group ID
+
+Channel ID
+
+Unique ID
+gge25
+
+*
+]
+[
+DESIGNATOR
+R14
+FOOTPRINT
+RES-TH_BD5.5-L15.0-P19.00-D0.8
+PARTTYPE
+MFR03SF100KA10
+DESCRIPTION
+Type:Metal Film Resistor Resistance:1Ω Tolerance:±1% Tolerance:±1% Voltage-Supply(Max):500V Power(Watts):3W Temperature Coefficient:±50ppm/℃ Temperature Coefficient:±50ppm/℃
+Component Kind
+Standard
+LCSC Part Name
+1Ω ±1% 3W 金属膜电阻 小体积,铜脚，圆柱状直插
+Manufacturer
+UNI-ROYAL(厚声)
+Manufacturer Part
+MFR03SF100KA10
+Supplier Footprint
+插件,D5xL15.5mm
+JLCPCB Part Class
+Extended Part
+Datasheet
+https://item.szlcsc.com/datasheet/MFR03SF100KA10/114902.html
+Supplier
+LCSC
+Add into BOM
+yes
+Convert to PCB
+yes
+3D Model Title
+RES-TH_BD5.5-L15.0-P19.00-D0.8
+Type
+Metal Film Resistor
+Tolerance
+±1%
+Voltage-Supply(Max)
+500V
+Power(Watts)
+3W
+Temperature Coefficient
+±50ppm/℃
+Description
+Type:Metal Film Resistor Resistance:1Ω Tolerance:±1% Tolerance:±1% Voltage-Supply(Max):500V Power(Watts):3W Temperature Coefficient:±50ppm/℃ Temperature Coefficient:±50ppm/℃
+Symbol
+MFR03SF100KA10
+Designator
+R14
+Supplier Part
+
+Value
+10K
+Name
+10K
+Device
+MFR03SF100KA10
+Reuse Block
+
+Group ID
+
+Channel ID
+
+Unique ID
+gge26
+
+*
+]
+[
+DESIGNATOR
+L8
+FOOTPRINT
+SW-TH_6P-L12.0-W12.0-P5.00-LS12.1-TL_C9900040374
+PARTTYPE
+TS1273CJ-R
+DESCRIPTION
+Operating Force:2.5N Mounting Type:Through Hole Length:12mm Width:12mm Switch Height:7.3mm Contact Current:50mA Voltage Rating:12V With Lamp:Red Life:100,000 Cycles
+Component Kind
+Standard
+LCSC Part Name
+带灯开关 红色12.0mm*12.0mm
+Supplier Part
+C18185601
+Manufacturer
+SHOU HAN(首韩)
+Manufacturer Part
+TS1273CJ-R
+Supplier Footprint
+插件-6P,12x12mm
+JLCPCB Part Class
+Extended Part
+Datasheet
+https://item.szlcsc.com/datasheet/TS1273CJ-R/19332231.html
+Supplier
+LCSC
+Add into BOM
+yes
+Convert to PCB
+yes
+3D Model Title
+SW-TH_6P-L12.0-W12.0-P5.00-LS12.1-TL_C9900040374
+Operating Force
+2.5N
+Mounting Type
+Through Hole
+Length
+12mm
+Width
+12mm
+Switch Height
+7.3mm
+Contact Current
+50mA
+Voltage Rating
+12V
+With Lamp
+Red
+Life
+100,000 Cycles
+Description
+Operating Force:2.5N Mounting Type:Through Hole Length:12mm Width:12mm Switch Height:7.3mm Contact Current:50mA Voltage Rating:12V With Lamp:Red Life:100,000 Cycles
+Symbol
+TS1273CJ-R
+Designator
+L8
+Name
+TS1273CJ-R
+Device
+TS1273CJ-R
+Reuse Block
+
+Group ID
+
+Channel ID
+
+Unique ID
+gge12_7
+
+*
+]
+[
+DESIGNATOR
+R15
+FOOTPRINT
+RES-TH_BD5.5-L15.0-P19.00-D0.8
+PARTTYPE
+MFR03SF100KA10
+DESCRIPTION
+Type:Metal Film Resistor Resistance:1Ω Tolerance:±1% Tolerance:±1% Voltage-Supply(Max):500V Power(Watts):3W Temperature Coefficient:±50ppm/℃ Temperature Coefficient:±50ppm/℃
+Component Kind
+Standard
+LCSC Part Name
+1Ω ±1% 3W 金属膜电阻 小体积,铜脚，圆柱状直插
+Manufacturer
+UNI-ROYAL(厚声)
+Manufacturer Part
+MFR03SF100KA10
+Supplier Footprint
+插件,D5xL15.5mm
+JLCPCB Part Class
+Extended Part
+Datasheet
+https://item.szlcsc.com/datasheet/MFR03SF100KA10/114902.html
+Supplier
+LCSC
+Add into BOM
+yes
+Convert to PCB
+yes
+3D Model Title
+RES-TH_BD5.5-L15.0-P19.00-D0.8
+Type
+Metal Film Resistor
+Tolerance
+±1%
+Voltage-Supply(Max)
+500V
+Power(Watts)
+3W
+Temperature Coefficient
+±50ppm/℃
+Description
+Type:Metal Film Resistor Resistance:1Ω Tolerance:±1% Tolerance:±1% Voltage-Supply(Max):500V Power(Watts):3W Temperature Coefficient:±50ppm/℃ Temperature Coefficient:±50ppm/℃
+Symbol
+MFR03SF100KA10
+Designator
+R15
+Supplier Part
+
+Value
+333
+Name
+333
+Device
+MFR03SF100KA10
+Reuse Block
+
+Group ID
+
+Channel ID
+
+Unique ID
+gge27
+
+*
+]
+[
+DESIGNATOR
+R16
+FOOTPRINT
+RES-TH_BD5.5-L15.0-P19.00-D0.8
+PARTTYPE
+MFR03SF100KA10
+DESCRIPTION
+Type:Metal Film Resistor Resistance:1Ω Tolerance:±1% Tolerance:±1% Voltage-Supply(Max):500V Power(Watts):3W Temperature Coefficient:±50ppm/℃ Temperature Coefficient:±50ppm/℃
+Component Kind
+Standard
+LCSC Part Name
+1Ω ±1% 3W 金属膜电阻 小体积,铜脚，圆柱状直插
+Manufacturer
+UNI-ROYAL(厚声)
+Manufacturer Part
+MFR03SF100KA10
+Supplier Footprint
+插件,D5xL15.5mm
+JLCPCB Part Class
+Extended Part
+Datasheet
+https://item.szlcsc.com/datasheet/MFR03SF100KA10/114902.html
+Supplier
+LCSC
+Add into BOM
+yes
+Convert to PCB
+yes
+3D Model Title
+RES-TH_BD5.5-L15.0-P19.00-D0.8
+Type
+Metal Film Resistor
+Tolerance
+±1%
+Voltage-Supply(Max)
+500V
+Power(Watts)
+3W
+Temperature Coefficient
+±50ppm/℃
+Description
+Type:Metal Film Resistor Resistance:1Ω Tolerance:±1% Tolerance:±1% Voltage-Supply(Max):500V Power(Watts):3W Temperature Coefficient:±50ppm/℃ Temperature Coefficient:±50ppm/℃
+Symbol
+MFR03SF100KA10
+Designator
+R16
+Supplier Part
+
+Value
+10K
+Name
+10K
+Device
+MFR03SF100KA10
+Reuse Block
+
+Group ID
+
+Channel ID
+
+Unique ID
+gge28
+
+*
+]
+[
+DESIGNATOR
+P3
+FOOTPRINT
+CONN-SMD_4P-P1.25_BM04B-GHS-TBT
+PARTTYPE
+BM04B-GHS-TBT(LF)(SN)(N)
+DESCRIPTION
+Pins Structure:1x4P Pitch:1.25mm Mounting Type:Surface Mount,Vertical Reference Series:GH Number of Pins:4P Number of Rows:1 Number of PINs Per Row:4 Row Spacing:- Current Rating:1A Contact Material:Phosphor Bronze Contact Plating:Tin Operating Temperatur
+Component Kind
+Standard
+LCSC Part Name
+1x4P 间距:1.25mm 立贴 系列:GH
+Supplier Part
+C2983876
+Manufacturer
+JST
+Manufacturer Part
+BM04B-GHS-TBT(LF)(SN)(N)
+Supplier Footprint
+SMD,P=1.25mm
+JLCPCB Part Class
+Extended Part
+Datasheet
+https://item.szlcsc.com/datasheet/BM04B-GHS-TBT(LF)(SN)(N)/3423628.html
+Supplier
+LCSC
+Add into BOM
+yes
+Convert to PCB
+yes
+3D Model Title
+CONN-SMD_4P-P1.25_BM04B-GHS-TBT
+Pins Structure
+1x4P
+Pitch
+1.25mm
+Mounting Type
+Surface Mount,Vertical
+Reference Series
+GH
+Number of Pins
+4P
+Number of Rows
+1
+Number of PINs Per Row
+4
+Row Spacing
+-
+Current Rating
+1A
+Contact Material
+Phosphor Bronze
+Contact Plating
+Tin
+Operating Temperature
+-25℃~+85℃
+Voltage Rating
+50V
+Plastic Material
+PA9T
+Flame Retardant Rating
+UL94V-0
+Supplementary Features
+Auxiliary Solder Pin
+Color
+White
+Z-Height of the Board
+4.05mm
+X-Length of Bottom Edge on Board (Spacing Line)
+8.25mm
+Y-Width of Bottom Edge on Board
+4.32mm
+Description
+Pins Structure:1x4P Pitch:1.25mm Mounting Type:Surface Mount,Vertical Reference Series:GH Number of Pins:4P Number of Rows:1 Number of PINs Per Row:4 Row Spacing:- Current Rating:1A Contact Material:Phosphor Bronze Contact Plating:Tin Operating Temperatur
+Symbol
+BM04B-GHS-TBT(LF)(SN)(N)
+Designator
+P3
+Name
+BM04B-GHS-TBT(LF)(SN)(N)
+Device
+BM04B-GHS-TBT(LF)(SN)(N)
+Reuse Block
+
+Group ID
+
+Channel ID
+
+Unique ID
+gge1_1
+
+*
+]
+[
+DESIGNATOR
+R17
+FOOTPRINT
+RES-TH_BD5.5-L15.0-P19.00-D0.8
+PARTTYPE
+MFR03SF100KA10
+DESCRIPTION
+Type:Metal Film Resistor Resistance:1Ω Tolerance:±1% Tolerance:±1% Voltage-Supply(Max):500V Power(Watts):3W Temperature Coefficient:±50ppm/℃ Temperature Coefficient:±50ppm/℃
+Component Kind
+Standard
+LCSC Part Name
+1Ω ±1% 3W 金属膜电阻 小体积,铜脚，圆柱状直插
+Manufacturer
+UNI-ROYAL(厚声)
+Manufacturer Part
+MFR03SF100KA10
+Supplier Footprint
+插件,D5xL15.5mm
+JLCPCB Part Class
+Extended Part
+Datasheet
+https://item.szlcsc.com/datasheet/MFR03SF100KA10/114902.html
+Supplier
+LCSC
+Add into BOM
+yes
+Convert to PCB
+yes
+3D Model Title
+RES-TH_BD5.5-L15.0-P19.00-D0.8
+Type
+Metal Film Resistor
+Tolerance
+±1%
+Voltage-Supply(Max)
+500V
+Power(Watts)
+3W
+Temperature Coefficient
+±50ppm/℃
+Description
+Type:Metal Film Resistor Resistance:1Ω Tolerance:±1% Tolerance:±1% Voltage-Supply(Max):500V Power(Watts):3W Temperature Coefficient:±50ppm/℃ Temperature Coefficient:±50ppm/℃
+Symbol
+MFR03SF100KA10
+Designator
+R17
+Supplier Part
+
+Value
+10K
+Name
+10K
+Device
+MFR03SF100KA10
+Reuse Block
+
+Group ID
+
+Channel ID
+
+Unique ID
+gge29
+
+*
+]
+[
+DESIGNATOR
+LED1
+FOOTPRINT
+LED-TH_BD5.8-P2.54-FD
+PARTTYPE
+HLMP-CM1A-560DD
+DESCRIPTION
+Illumination Color:Green Voltage - Forward(Vf):3.2V Voltage - Forward(Vf):3.2V Power(Watts):116mW Forward Current:20mA Wavelength - Dominant:519nm~539nm Wavelength - Dominant:519nm~539nm Peak Wavelength:516nm Lens Color:Water Clear Luminous Intensity:7600
+Component Kind
+Standard
+LCSC Part Name
+5mm 蓝色和绿色 LED 灯
+Supplier Part
+C6207396
+Manufacturer
+Broadcom(博通)
+Manufacturer Part
+HLMP-CM1A-560DD
+Supplier Footprint
+插件
+JLCPCB Part Class
+Extended Part
+Datasheet
+https://item.szlcsc.com/datasheet/HLMP-CM1A-560DD/7152533.html
+Supplier
+LCSC
+Add into BOM
+yes
+Convert to PCB
+yes
+3D Model Title
+LED-TH_5mm_YG
+Illumination Color
+Green
+Voltage - Forward(Vf)
+3.2V
+Power(Watts)
+116mW
+Forward Current
+20mA
+Wavelength - Dominant
+519nm~539nm
+Peak Wavelength
+516nm
+Lens Color
+Water Clear
+Luminous Intensity
+76000mcd
+Viewing Angle
+15°
+Operating Temperature
+-40℃~+85℃
+Description
+Illumination Color:Green Voltage - Forward(Vf):3.2V Voltage - Forward(Vf):3.2V Power(Watts):116mW Forward Current:20mA Wavelength - Dominant:519nm~539nm Wavelength - Dominant:519nm~539nm Peak Wavelength:516nm Lens Color:Water Clear Luminous Intensity:7600
+Symbol
+HLMP-CM1A-560DD
+Designator
+LED1
+Name
+HLMP-CM1A-560DD
+Device
+HLMP-CM1A-560DD
+Reuse Block
+
+Group ID
+
+Channel ID
+
+Unique ID
+gge30
+
+*
+]
+[
+DESIGNATOR
+R18
+FOOTPRINT
+RES-TH_BD5.5-L15.0-P19.00-D0.8
+PARTTYPE
+MFR03SF100KA10
+DESCRIPTION
+Type:Metal Film Resistor Resistance:1Ω Tolerance:±1% Tolerance:±1% Voltage-Supply(Max):500V Power(Watts):3W Temperature Coefficient:±50ppm/℃ Temperature Coefficient:±50ppm/℃
+Component Kind
+Standard
+LCSC Part Name
+1Ω ±1% 3W 金属膜电阻 小体积,铜脚，圆柱状直插
+Manufacturer
+UNI-ROYAL(厚声)
+Manufacturer Part
+MFR03SF100KA10
+Supplier Footprint
+插件,D5xL15.5mm
+JLCPCB Part Class
+Extended Part
+Datasheet
+https://item.szlcsc.com/datasheet/MFR03SF100KA10/114902.html
+Supplier
+LCSC
+Add into BOM
+yes
+Convert to PCB
+yes
+3D Model Title
+RES-TH_BD5.5-L15.0-P19.00-D0.8
+Type
+Metal Film Resistor
+Tolerance
+±1%
+Voltage-Supply(Max)
+500V
+Power(Watts)
+3W
+Temperature Coefficient
+±50ppm/℃
+Description
+Type:Metal Film Resistor Resistance:1Ω Tolerance:±1% Tolerance:±1% Voltage-Supply(Max):500V Power(Watts):3W Temperature Coefficient:±50ppm/℃ Temperature Coefficient:±50ppm/℃
+Symbol
+MFR03SF100KA10
+Designator
+R18
+Supplier Part
+
+Value
+333
+Name
+333
+Device
+MFR03SF100KA10
+Reuse Block
+
+Group ID
+
+Channel ID
+
+Unique ID
+gge31
+
+*
+]
+[
+DESIGNATOR
+P1
+FOOTPRINT
+CONN-SMD_4P-P1.25_BM04B-GHS-TBT
+PARTTYPE
+BM04B-GHS-TBT(LF)(SN)(N)
+DESCRIPTION
+Pins Structure:1x4P Pitch:1.25mm Mounting Type:Surface Mount,Vertical Reference Series:GH Number of Pins:4P Number of Rows:1 Number of PINs Per Row:4 Row Spacing:- Current Rating:1A Contact Material:Phosphor Bronze Contact Plating:Tin Operating Temperatur
+Component Kind
+Standard
+LCSC Part Name
+1x4P 间距:1.25mm 立贴 系列:GH
+Supplier Part
+C2983876
+Manufacturer
+JST
+Manufacturer Part
+BM04B-GHS-TBT(LF)(SN)(N)
+Supplier Footprint
+SMD,P=1.25mm
+JLCPCB Part Class
+Extended Part
+Datasheet
+https://item.szlcsc.com/datasheet/BM04B-GHS-TBT(LF)(SN)(N)/3423628.html
+Supplier
+LCSC
+Add into BOM
+yes
+Convert to PCB
+yes
+3D Model Title
+CONN-SMD_4P-P1.25_BM04B-GHS-TBT
+Pins Structure
+1x4P
+Pitch
+1.25mm
+Mounting Type
+Surface Mount,Vertical
+Reference Series
+GH
+Number of Pins
+4P
+Number of Rows
+1
+Number of PINs Per Row
+4
+Row Spacing
+-
+Current Rating
+1A
+Contact Material
+Phosphor Bronze
+Contact Plating
+Tin
+Operating Temperature
+-25℃~+85℃
+Voltage Rating
+50V
+Plastic Material
+PA9T
+Flame Retardant Rating
+UL94V-0
+Supplementary Features
+Auxiliary Solder Pin
+Color
+White
+Z-Height of the Board
+4.05mm
+X-Length of Bottom Edge on Board (Spacing Line)
+8.25mm
+Y-Width of Bottom Edge on Board
+4.32mm
+Description
+Pins Structure:1x4P Pitch:1.25mm Mounting Type:Surface Mount,Vertical Reference Series:GH Number of Pins:4P Number of Rows:1 Number of PINs Per Row:4 Row Spacing:- Current Rating:1A Contact Material:Phosphor Bronze Contact Plating:Tin Operating Temperatur
+Symbol
+BM04B-GHS-TBT(LF)(SN)(N)
+Designator
+P1
+Name
+BM04B-GHS-TBT(LF)(SN)(N)
+Device
+BM04B-GHS-TBT(LF)(SN)(N)
+Reuse Block
+
+Group ID
+
+Channel ID
+
+Unique ID
+gge1_2
+
+*
+]
+(
+GND 
+CN1-1 BM04B-GHS-TBT(LF)(SN)(N)-1 Passive 
+CN1-5 BM04B-GHS-TBT(LF)(SN)(N)-5 Passive 
+CN1-6 BM04B-GHS-TBT(LF)(SN)(N)-6 Passive 
+U1-10 MCP23017-E/SP-VSS Input   
+U1-15 MCP23017-E/SP-A0 Input   
+U1-16 MCP23017-E/SP-A1 Input   
+U1-17 MCP23017-E/SP-A2 Input   
+P4-5 2.54-2*5P简牛-5 Input   
+P4-6 2.54-2*5P简牛-6 Input   
+P4-7 2.54-2*5P简牛-7 Input   
+P4-8 2.54-2*5P简牛-8 Input   
+L1-4 TS1273CJ-R-4 Passive 
+L1-5 TS1273CJ-R-5 Passive 
+L2-4 TS1273CJ-R-4 Passive 
+L2-5 TS1273CJ-R-5 Passive 
+L3-4 TS1273CJ-R-4 Passive 
+L3-5 TS1273CJ-R-5 Passive 
+L4-4 TS1273CJ-R-4 Passive 
+L4-5 TS1273CJ-R-5 Passive 
+L5-4 TS1273CJ-R-4 Passive 
+L5-5 TS1273CJ-R-5 Passive 
+L6-4 TS1273CJ-R-4 Passive 
+L6-5 TS1273CJ-R-5 Passive 
+L7-4 TS1273CJ-R-4 Passive 
+L7-5 TS1273CJ-R-5 Passive 
+L8-4 TS1273CJ-R-4 Passive 
+L8-5 TS1273CJ-R-5 Passive 
+P3-1 BM04B-GHS-TBT(LF)(SN)(N)-1 Passive 
+P3-5 BM04B-GHS-TBT(LF)(SN)(N)-5 Passive 
+P3-6 BM04B-GHS-TBT(LF)(SN)(N)-6 Passive 
+R18-2 MFR03SF100KA10-2 Passive 
+P1-5 BM04B-GHS-TBT(LF)(SN)(N)-5 Passive 
+P1-6 BM04B-GHS-TBT(LF)(SN)(N)-6 Passive 
+)
+(
+SCL 
+CN1-2 BM04B-GHS-TBT(LF)(SN)(N)-2 Passive 
+U1-12 MCP23017-E/SP-SCK Input   
+P1-2 BM04B-GHS-TBT(LF)(SN)(N)-2 Passive 
+)
+(
+SDA 
+CN1-3 BM04B-GHS-TBT(LF)(SN)(N)-3 Passive 
+U1-13 MCP23017-E/SP-SDA Input   
+P1-3 BM04B-GHS-TBT(LF)(SN)(N)-3 Passive 
+)
+(
+VCC 
+CN1-4 BM04B-GHS-TBT(LF)(SN)(N)-4 Passive 
+U1-9 MCP23017-E/SP-VDD Input   
+R2-1 MFR03SF100KA10-1 Passive 
+R4-1 MFR03SF100KA10-1 Passive 
+R6-1 MFR03SF100KA10-1 Passive 
+R8-1 MFR03SF100KA10-1 Passive 
+R10-1 MFR03SF100KA10-1 Passive 
+R12-1 MFR03SF100KA10-1 Passive 
+R14-1 MFR03SF100KA10-1 Passive 
+R16-1 MFR03SF100KA10-1 Passive 
+R17-2 MFR03SF100KA10-2 Passive 
+P1-4 BM04B-GHS-TBT(LF)(SN)(N)-4 Passive 
+)
+(
+SW1 
+U1-1 MCP23017-E/SP-GPB0 Input   
+L1-2 TS1273CJ-R-2 Passive 
+)
+(
+SW2 
+U1-2 MCP23017-E/SP-GPB1 Input   
+L2-2 TS1273CJ-R-2 Passive 
+)
+(
+SW3 
+U1-3 MCP23017-E/SP-GPB2 Input   
+L3-2 TS1273CJ-R-2 Passive 
+)
+(
+SW4 
+U1-4 MCP23017-E/SP-GPB3 Input   
+L4-2 TS1273CJ-R-2 Passive 
+)
+(
+SW5 
+U1-5 MCP23017-E/SP-GPB4 Input   
+L5-2 TS1273CJ-R-2 Passive 
+)
+(
+SW6 
+U1-6 MCP23017-E/SP-GPB5 Input   
+L6-2 TS1273CJ-R-2 Passive 
+)
+(
+SW7 
+U1-7 MCP23017-E/SP-GPB6 Input   
+L7-2 TS1273CJ-R-2 Passive 
+)
+(
+SW8 
+U1-8 MCP23017-E/SP-GPB7 Input   
+L8-2 TS1273CJ-R-2 Passive 
+)
+(
+$R17_1 
+U1-18 MCP23017-E/SP-RESET# Input   
+R17-1 MFR03SF100KA10-1 Passive 
+)
+(
+INTB 
+U1-19 MCP23017-E/SP-INTB Input   
+P3-4 BM04B-GHS-TBT(LF)(SN)(N)-4 Passive 
+)
+(
+LED8 
+U1-21 MCP23017-E/SP-GPA0 Input   
+R15-1 MFR03SF100KA10-1 Passive 
+)
+(
+LED7 
+U1-22 MCP23017-E/SP-GPA1 Input   
+R13-1 MFR03SF100KA10-1 Passive 
+)
+(
+LED6 
+U1-23 MCP23017-E/SP-GPA2 Input   
+R11-1 MFR03SF100KA10-1 Passive 
+)
+(
+LED5 
+U1-24 MCP23017-E/SP-GPA3 Input   
+R9-1 MFR03SF100KA10-1 Passive 
+)
+(
+LED4 
+U1-25 MCP23017-E/SP-GPA4 Input   
+R7-1 MFR03SF100KA10-1 Passive 
+)
+(
+LED3 
+U1-26 MCP23017-E/SP-GPA5 Input   
+R5-1 MFR03SF100KA10-1 Passive 
+)
+(
+LED2 
+U1-27 MCP23017-E/SP-GPA6 Input   
+R3-1 MFR03SF100KA10-1 Passive 
+)
+(
+LED1 
+U1-28 MCP23017-E/SP-GPA7 Input   
+R1-1 MFR03SF100KA10-1 Passive 
+)
+(
++5V 
+P4-1 2.54-2*5P简牛-1 Input   
+P4-2 2.54-2*5P简牛-2 Input   
+P4-3 2.54-2*5P简牛-3 Input   
+P4-4 2.54-2*5P简牛-4 Input   
+P1-1 BM04B-GHS-TBT(LF)(SN)(N)-1 Passive 
+)
+(
+$L1_1 
+L1-1 TS1273CJ-R-1 Passive 
+R2-2 MFR03SF100KA10-2 Passive 
+)
+(
+$L1_6 
+L1-6 TS1273CJ-R-6 Passive 
+R1-2 MFR03SF100KA10-2 Passive 
+)
+(
+$L2_1 
+L2-1 TS1273CJ-R-1 Passive 
+R4-2 MFR03SF100KA10-2 Passive 
+)
+(
+$L2_6 
+L2-6 TS1273CJ-R-6 Passive 
+R3-2 MFR03SF100KA10-2 Passive 
+)
+(
+$L3_1 
+L3-1 TS1273CJ-R-1 Passive 
+R6-2 MFR03SF100KA10-2 Passive 
+)
+(
+$L3_6 
+L3-6 TS1273CJ-R-6 Passive 
+R5-2 MFR03SF100KA10-2 Passive 
+)
+(
+$L4_1 
+L4-1 TS1273CJ-R-1 Passive 
+R8-2 MFR03SF100KA10-2 Passive 
+)
+(
+$L4_6 
+L4-6 TS1273CJ-R-6 Passive 
+R7-2 MFR03SF100KA10-2 Passive 
+)
+(
+$L5_1 
+L5-1 TS1273CJ-R-1 Passive 
+R10-2 MFR03SF100KA10-2 Passive 
+)
+(
+$L5_6 
+L5-6 TS1273CJ-R-6 Passive 
+R9-2 MFR03SF100KA10-2 Passive 
+)
+(
+$L6_1 
+L6-1 TS1273CJ-R-1 Passive 
+R12-2 MFR03SF100KA10-2 Passive 
+)
+(
+$L6_6 
+L6-6 TS1273CJ-R-6 Passive 
+R11-2 MFR03SF100KA10-2 Passive 
+)
+(
+$L7_1 
+L7-1 TS1273CJ-R-1 Passive 
+R14-2 MFR03SF100KA10-2 Passive 
+)
+(
+$L7_6 
+L7-6 TS1273CJ-R-6 Passive 
+R13-2 MFR03SF100KA10-2 Passive 
+)
+(
+$L8_1 
+L8-1 TS1273CJ-R-1 Passive 
+R16-2 MFR03SF100KA10-2 Passive 
+)
+(
+$L8_6 
+L8-6 TS1273CJ-R-6 Passive 
+R15-2 MFR03SF100KA10-2 Passive 
+)
+(
+GPIO35 
+P3-2 BM04B-GHS-TBT(LF)(SN)(N)-2 Passive 
+LED1-2 HLMP-CM1A-560DD-- Passive 
+)
+(
+NC1 
+P3-3 BM04B-GHS-TBT(LF)(SN)(N)-3 Passive 
+)
+(
+$LED1_1 
+LED1-1 HLMP-CM1A-560DD-+ Passive 
+R18-1 MFR03SF100KA10-1 Passive 
+)
