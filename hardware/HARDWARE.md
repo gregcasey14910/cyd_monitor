@@ -166,6 +166,49 @@ MCP23017 address pins A0, A1, A2 all tied to GND → **Address = 0x20**
 - **INTB**: Single wire only — CYD P3 pin 3 (GPIO35) → Carrier P3 pin 4 (INTB)
 - **P1 and P3**: Do NOT connect as full connectors
 
+---
+
+## Assembly Guide
+
+### Connectors to SOLDER on Carrier Board
+| Connector | Solder? | Reason |
+|-----------|---------|--------|
+| CN1 | ✅ YES | Only I2C + power connection needed |
+| P1 | ❌ NO | UART/power mismatch with CYD — dangerous |
+| P3 | ❌ NO | Pin conflict with CYD — dangerous |
+| P4 | ❌ NO | External 5V not needed for USB debug |
+
+### Components to Solder
+- CN1 (JST 4-pin 1.25mm) ✅
+- U1 MCP23017 DIP-28 ✅
+- R1–R18 (all resistors) ✅
+- L1–L8 (illuminated pushbuttons) ✅
+- LED1 — **see rework note below** ✅
+
+### Cable to Use
+- **1x JST 4-pin 1.25mm cable** — CYD CN1 → Carrier CN1
+- Waiting on Amazon delivery of 1.25mm JST connectors
+
+### INTB Wire (add later after initial debug)
+- Single wire only: CYD P3 pin 3 (GPIO35) → Carrier P3 pin 4 (INTB)
+- Do NOT use a 4-pin cable on P3
+
+---
+
+## LED1 Rework
+
+**Original design (PROBLEM):**
+- LED1 (green HLMP-CM1A) was connected to carrier P3 pin 2 labeled "GPIO35 status"
+- GPIO35 on ESP32 is **INPUT ONLY** — cannot drive an LED
+
+**Rework (SOLUTION):**
+- Disconnect LED1 from P3 pin 2
+- Rewire LED1 as a simple **VCC power indicator**: VCC → R18 (333Ω) → LED1 → GND
+- LED lights whenever board is powered — no GPIO needed
+- R18 (333Ω) already on board, reuse it
+
+---
+
 ## Key Notes for Code
 - `Wire.begin(27, 22)` — use non-conflicting I2C pins
 - MCP23017 IODIRA = 0x00 (all Port A = outputs for LEDs)
@@ -173,4 +216,31 @@ MCP23017 address pins A0, A1, A2 all tied to GND → **Address = 0x20**
 - MCP23017 GPPUB = 0xFF (enable pull-ups on Port B)
 - Read buttons: `Wire.read()` from GPIOB register — LOW = pressed
 - Write LEDs: write to GPIOA register — HIGH = LED on
-- INTB on GPIO35 → attach interrupt for button events
+- INTB on GPIO35 → attach interrupt for button events (Phase 2)
+
+---
+
+## Test Plan - Phase 1 (Initial Debug - No INTB wire yet)
+
+### Goal
+- Verify MCP23017 found on I2C bus at 0x20
+- Control 8 LEDs from CYD TFT display (visual feedback)
+- Simulate button presses via Serial command line
+
+### CYD Display (screen_type = 3)
+- New screen showing 8 LED indicators (circles, green=ON, grey=OFF)
+- Shows current LED state and last button event
+- Updates in real time as LEDs toggle
+
+### Serial Commands
+| Command | Action |
+|---------|--------|
+| `L1` – `L8` | Toggle LED 1–8 on carrier board |
+| `LA` | All LEDs ON |
+| `LX` | All LEDs OFF |
+| `B?` | Read and print current button states |
+| `SCAN` | I2C scan — confirm MCP23017 at 0x20 |
+
+### Phase 2 (After INTB wire added)
+- Interrupt-driven button detection
+- Button press shown on TFT display in real time
