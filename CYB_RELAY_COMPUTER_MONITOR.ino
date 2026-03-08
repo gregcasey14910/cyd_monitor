@@ -684,7 +684,7 @@ void drawMCP() {
   for (int i = 0; i < 8; i++) {
     int16_t cx = cx_start + (i * cx_step);
     bool on = (mcp_led_state >> i) & 0x01;
-    uint16_t color = on ? ILI9341_GREEN : 0x4208;  // green or dark grey
+    uint16_t color = on ? ILI9341_RED : 0x4208;  // red or dark grey
     tft.fillCircle(cx, led_y + 5, radius, color);
     tft.drawCircle(cx, led_y + 5, radius, ILI9341_WHITE);
     // LED number
