@@ -4,11 +4,30 @@
  */
 
 #include <SPI.h>
+#include <Wire.h>
 #include <Adafruit_GFX.h>
 #include <Adafruit_ILI9341.h>
 #include <WiFi.h>
 #include <esp_now.h>
 #include <esp_wifi.h>
+
+// MCP23017 I2C - CYD CN1: SDA=GPIO27, SCL=GPIO22
+#define MCP_SDA       27
+#define MCP_SCL       22
+#define MCP_ADDR      0x20
+// MCP23017 registers (BANK=0 default)
+#define MCP_IODIRA    0x00
+#define MCP_IODIRB    0x01
+#define MCP_GPPUA     0x0C
+#define MCP_GPPUB     0x0D
+#define MCP_GPIOA     0x12
+#define MCP_GPIOB     0x13
+#define MCP_OLATA     0x14
+
+bool     mcp_found    = false;
+uint8_t  mcp_led_state  = 0x00;  // current LED output state (Port A)
+uint8_t  mcp_btn_state  = 0xFF;  // current button state (Port B, active LOW)
+String   lastSerialCmd  = "none";
 
 // CYD Pin definitions for HARDWARE SPI
 #define TFT_CS   15
@@ -26,7 +45,7 @@ Adafruit_ILI9341 tft = Adafruit_ILI9341(TFT_CS, TFT_DC, TFT_RST);
 String macAddress = "";
 
 // Screen type selection
-const int screen_type = 2;  // 1 = scrolling, 2 = ALU graphic
+const int screen_type = 3;  // 1 = scrolling, 2 = ALU graphic, 3 = MCP23017 debug
 
 // ESP-NOW message structure
 typedef struct struct_message {
@@ -242,9 +261,20 @@ void setup() {
     tft.print("Listening...");
   } else if (screen_type == 2) {
     drawALU();
+  } else if (screen_type == 3) {
+    initMCP();
+    drawMCP();
   }
-  
+
   Serial.println("Ready!\n");
+  if (screen_type == 3) {
+    Serial.println("MCP23017 Serial Commands:");
+    Serial.println("  L1-L8  : Toggle LED");
+    Serial.println("  LA     : All LEDs ON");
+    Serial.println("  LX     : All LEDs OFF");
+    Serial.println("  B?     : Read buttons");
+    Serial.println("  SCAN   : I2C scan");
+  }
 }
 
 void loop() {
@@ -290,7 +320,92 @@ void loop() {
     }
   }
   
+  // Serial command handler (screen_type=3)
+  static String serialBuf = "";
+  while (screen_type == 3 && Serial.available()) {
+    char c = Serial.read();
+    if (c == '\n' || c == '\r') {
+      if (serialBuf.length() == 0) continue;
+      String cmd = serialBuf;
+      serialBuf = "";
+      cmd.trim();
+      cmd.toUpperCase();
+      lastSerialCmd = cmd;
+
+      if (cmd == "SCAN") {
+        Serial.println("Scanning I2C...");
+        for (uint8_t addr = 1; addr < 127; addr++) {
+          Wire.beginTransmission(addr);
+          if (Wire.endTransmission() == 0) {
+            Serial.printf("  Found device at 0x%02X\n", addr);
+          }
+        }
+        Serial.println("Scan done.");
+      } else if (cmd == "LA") {
+        mcp_led_state = 0xFF;
+        mcpWriteReg(MCP_OLATA, mcp_led_state);
+        Serial.println("All LEDs ON");
+        drawMCP();
+      } else if (cmd == "LX") {
+        mcp_led_state = 0x00;
+        mcpWriteReg(MCP_OLATA, mcp_led_state);
+        Serial.println("All LEDs OFF");
+        drawMCP();
+      } else if (cmd == "B?") {
+        mcp_btn_state = mcp_found ? mcpReadReg(MCP_GPIOB) : mcp_led_state;
+        Serial.printf("Button state: 0x%02X%s\n", mcp_btn_state, mcp_found ? "" : " (LED mirror)");
+        for (int i = 0; i < 8; i++) {
+          bool active = (mcp_btn_state >> i) & 0x01;
+          Serial.printf("  SW%d: %s\n", i+1, active ? "ON" : "off");
+        }
+        drawMCP();
+      } else if (cmd.startsWith("B") && cmd.length() == 2 && cmd.charAt(1) >= '1' && cmd.charAt(1) <= '8') {
+        int n = cmd.charAt(1) - '1';  // 0-7
+        mcp_btn_state = mcp_found ? mcpReadReg(MCP_GPIOB) : mcp_led_state;
+        bool active = (mcp_btn_state >> n) & 0x01;
+        Serial.printf("SW%d: %s\n", n+1, active ? "ON" : "off");
+      } else if (cmd.startsWith("L") && cmd.length() == 2) {
+        int n = cmd.charAt(1) - '1';  // 0-7
+        if (n >= 0 && n <= 7) {
+          mcp_led_state ^= (1 << n);  // toggle
+          mcpWriteReg(MCP_OLATA, mcp_led_state);
+          Serial.printf("LED%d toggled -> 0x%02X\n", n+1, mcp_led_state);
+          drawMCP();
+        }
+      } else {
+        Serial.printf("Unknown cmd: %s\n", cmd.c_str());
+      }
+    } else {
+      serialBuf += c;
+    }
+  }
+
+  // Uptime counter - update every second
+  if (screen_type == 3) {
+    static unsigned long lastUptimeDraw = 0;
+    if (millis() - lastUptimeDraw >= 1000) {
+      lastUptimeDraw = millis();
+      drawUptime();
+    }
+  }
+
   delay(50);
+}
+
+void drawUptime() {
+  unsigned long t = millis() / 1000;
+  uint16_t hh = t / 3600;
+  uint8_t  mm = (t % 3600) / 60;
+  uint8_t  ss = t % 60;
+  char buf[9];
+  snprintf(buf, sizeof(buf), "%02d:%02d:%02d", hh, mm, ss);
+
+  // Clear uptime row only
+  tft.fillRect(0, 280, 240, 36, ILI9341_BLACK);
+  tft.setTextSize(3);
+  tft.setTextColor(ILI9341_YELLOW);
+  tft.setCursor(48, 284);   // 8 chars * 18px = 144px wide, centered: (240-144)/2 = 48
+  tft.print(buf);
 }
 
 // ESP-NOW callback
@@ -501,6 +616,124 @@ void drawALU() {
   tft.setCursor(status_right_edge - 48, status_start_y + (status_line_height * 2));
   tft.setTextColor(zero_bit ? ILI9341_GREEN : ILI9341_RED);
   tft.print("Zero");
+}
+
+// === MCP23017 Functions ===
+
+void mcpWriteReg(uint8_t reg, uint8_t val) {
+  if (!mcp_found) return;
+  Wire.beginTransmission(MCP_ADDR);
+  Wire.write(reg);
+  Wire.write(val);
+  Wire.endTransmission();
+}
+
+uint8_t mcpReadReg(uint8_t reg) {
+  if (!mcp_found) return 0xFF;
+  Wire.beginTransmission(MCP_ADDR);
+  Wire.write(reg);
+  Wire.endTransmission();
+  Wire.requestFrom(MCP_ADDR, 1);
+  return Wire.available() ? Wire.read() : 0xFF;
+}
+
+void initMCP() {
+  Wire.begin(MCP_SDA, MCP_SCL);
+  Serial.println("Init MCP23017...");
+  Wire.beginTransmission(MCP_ADDR);
+  mcp_found = (Wire.endTransmission() == 0);
+
+  if (mcp_found) {
+    mcpWriteReg(MCP_IODIRA, 0x00);  // Port A = all outputs (LEDs)
+    mcpWriteReg(MCP_IODIRB, 0xFF);  // Port B = all inputs (buttons)
+    mcpWriteReg(MCP_GPPUB,  0xFF);  // Port B pull-ups enabled
+    mcpWriteReg(MCP_OLATA,  0x00);  // All LEDs off
+    Serial.println("MCP23017 OK at 0x20");
+  } else {
+    Serial.println("MCP23017 NOT FOUND - display only mode");
+  }
+}
+
+void drawMCP() {
+  // Clear working area
+  tft.fillRect(0, displayStartY, 240, displayHeight, ILI9341_BLACK);
+
+  // MCP status line
+  tft.setTextSize(2);
+  if (mcp_found) {
+    tft.setTextColor(ILI9341_GREEN);
+    tft.setCursor(5, displayStartY + 2);
+    tft.print("MCP OK @ 0x20");
+  } else {
+    tft.setTextColor(ILI9341_RED);
+    tft.setCursor(5, displayStartY + 2);
+    tft.print("MCP NOT FOUND");
+  }
+
+  // LED circles - row of 8
+  int16_t led_y = displayStartY + 35;
+  tft.setTextSize(1);
+  tft.setTextColor(ILI9341_WHITE);
+  tft.setCursor(5, led_y - 10);
+  tft.print("LEDs:");
+
+  int16_t cx_start = 15;
+  int16_t cx_step  = 28;
+  int16_t radius   = 11;
+
+  for (int i = 0; i < 8; i++) {
+    int16_t cx = cx_start + (i * cx_step);
+    bool on = (mcp_led_state >> i) & 0x01;
+    uint16_t color = on ? ILI9341_GREEN : 0x4208;  // green or dark grey
+    tft.fillCircle(cx, led_y + 5, radius, color);
+    tft.drawCircle(cx, led_y + 5, radius, ILI9341_WHITE);
+    // LED number
+    tft.setTextSize(1);
+    tft.setTextColor(ILI9341_WHITE);
+    tft.setCursor(cx - 3, led_y + 1);
+    tft.print(i + 1);
+  }
+
+  // Button circles - row of 8
+  int16_t btn_y = led_y + 50;
+  tft.setTextSize(1);
+  tft.setTextColor(ILI9341_WHITE);
+  tft.setCursor(5, btn_y - 10);
+  tft.print("BTNs:");
+
+  for (int i = 0; i < 8; i++) {
+    int16_t cx = cx_start + (i * cx_step);
+    bool pressed = !((mcp_btn_state >> i) & 0x01);  // active LOW
+    uint16_t color = pressed ? ILI9341_YELLOW : 0x4208;
+    tft.fillCircle(cx, btn_y + 5, radius, color);
+    tft.drawCircle(cx, btn_y + 5, radius, ILI9341_WHITE);
+    tft.setTextSize(1);
+    tft.setTextColor(ILI9341_BLACK);
+    tft.setCursor(cx - 3, btn_y + 1);
+    tft.print(i + 1);
+  }
+
+  // LED hex value
+  int16_t info_y = btn_y + 40;
+  tft.setTextSize(2);
+  tft.setTextColor(ILI9341_CYAN);
+  tft.setCursor(5, info_y);
+  char buf[32];
+  sprintf(buf, "LED:0x%02X BTN:0x%02X", mcp_led_state, mcp_btn_state);
+  tft.print(buf);
+
+  // Last command
+  tft.setTextSize(2);
+  tft.setTextColor(ILI9341_YELLOW);
+  tft.setCursor(5, info_y + 25);
+  tft.print("CMD:");
+  tft.print(lastSerialCmd);
+
+  // Help line
+  tft.setTextSize(1);
+  tft.setTextColor(0x7BEF);  // light grey
+  tft.setCursor(5, info_y + 55);
+  tft.print("Serial: L1-L8 LA LX B? SCAN");
 }
 
 void drawHeader() {
