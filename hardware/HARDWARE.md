@@ -23,7 +23,7 @@ block-beta
 flowchart LR
     subgraph CYD ["CYD - ESP32"]
         SDA["GPIO27\nSDA"]
-        SCL["GPIO26\nSCL"]
+        SCL["GPIO22\nSCL"]
         INT["GPIO35\nINTB"]
         TFT["TFT Display\nILI9341"]
         RGB["RGB LED\nR=4 G=16 B=17"]
@@ -86,12 +86,12 @@ MCP23017 address pins A0, A1, A2 all tied to GND → **Address = 0x20**
 | 4          | LED_RED         | CYD RGB LED (active LOW)                  |
 | 16         | LED_GREEN       | CYD RGB LED (active LOW)                  |
 | 17         | LED_BLUE        | CYD RGB LED (active LOW)                  |
-| 26         | I2C SCL         | To MCP23017 SCL (use Wire.begin(27,26))   |
-| 27         | I2C SDA         | To MCP23017 SDA (use Wire.begin(27,26))   |
+| 22         | I2C SCL         | CN1 pin 2 → MCP23017 SCL   |
+| 27         | I2C SDA         | CN1 pin 3 → MCP23017 SDA   |
 | 35         | INTB (input)    | MCP23017 interrupt B — input-only pin     |
 
 > ⚠️ **GPIO21 conflict:** GPIO21 is used for TFT backlight. Do NOT use as default I2C SDA.
-> Use `Wire.begin(27, 26)` in code for MCP23017.
+> Use `Wire.begin(27, 22)` in code for MCP23017.
 
 ## MCP23017 Port Map
 
@@ -116,15 +116,58 @@ MCP23017 address pins A0, A1, A2 all tied to GND → **Address = 0x20**
 
 ## Connectors
 
-| Connector | Type              | Pins | Function                    |
-|-----------|-------------------|------|-----------------------------|
-| CN1       | JST 4-pin 1.25mm  | VCC, SCL, SDA, GND | I2C to CYD     |
-| P1        | JST 4-pin 1.25mm  | VCC, SCL, SDA, GND | I2C (same as CN1) |
-| P3        | JST 4-pin 1.25mm  | GND, GPIO35, NC, INTB | Interrupt/status |
-| P4        | IDC 10-pin 2.54mm | 5V (pins 1-4), GND (pins 5-8) | Power |
+### Carrier Board Connectors
+| Connector | Type              | Pin 1 | Pin 2 | Pin 3 | Pin 4 |
+|-----------|-------------------|-------|-------|-------|-------|
+| CN1       | JST 4-pin 1.25mm  | VCC   | SCL   | SDA   | GND   |
+| P1        | JST 4-pin 1.25mm  | VCC   | SCL   | SDA   | GND   |
+| P3        | JST 4-pin 1.25mm  | GND   | GPIO35 status | NC | INTB |
+| P4        | IDC 10-pin 2.54mm | 5V (pins 1-4) | | GND (pins 5-8) | |
+
+### CYD Board Connectors
+| Connector | Type              | Pin 1 | Pin 2 | Pin 3 | Pin 4 |
+|-----------|-------------------|-------|-------|-------|-------|
+| CN1       | JST 4-pin 1.25mm  | 3.3V  | GPIO22 (SCL) | GPIO27 (SDA) | GND |
+| P1        | JST 4-pin 1.25mm  | 5V (Vin) | TX GPIO1 | RX GPIO3 | GND |
+| P3        | JST 4-pin 1.25mm  | GPIO21 (backlight) | GPIO22 | GPIO35 | GND |
+
+---
+
+## ⚠️ CONNECTOR MISMATCH WARNING
+
+> The connectors on the CYD and carrier board look identical (JST 4-pin 1.25mm) but carry **different signals**. Do NOT blindly plug matching connectors together.
+
+### CN1 → CN1 ✅ SAFE — Connect this one
+| Pin | CYD Signal | Carrier Signal | Status |
+|-----|-----------|----------------|--------|
+| 1 | 3.3V | VCC | ✅ OK |
+| 2 | GPIO22 (SCL) | SCL | ✅ OK |
+| 3 | GPIO27 (SDA) | SDA | ✅ OK |
+| 4 | GND | GND | ✅ OK |
+
+### P1 → P1 🚨 DO NOT CONNECT
+| Pin | CYD Signal | Carrier Signal | Problem |
+|-----|-----------|----------------|---------|
+| 1 | 5V (Vin) | VCC (3.3V) | ⚠️ Carrier expects 3.3V, receives 5V |
+| 2 | TX GPIO1 (UART) | SCL (I2C) | 🚨 Signal mismatch |
+| 3 | RX GPIO3 (UART) | SDA (I2C) | 🚨 Signal mismatch |
+| 4 | GND | GND | ✅ OK |
+
+### P3 → P3 🚨 DO NOT CONNECT
+| Pin | CYD Signal | Carrier Signal | Problem |
+|-----|-----------|----------------|---------|
+| 1 | GPIO21 (backlight OUTPUT) | GND | 🚨 **SHORT CIRCUIT** — output driven into ground |
+| 2 | GPIO22 (SCL) | GPIO35 status | 🚨 Two drivers on same line |
+| 3 | GPIO35 (input) | NC | ✅ NC, no damage |
+| 4 | GND | INTB | 🚨 INTB permanently LOW, interrupt fires constantly |
+
+### Correct Wiring Summary
+- **CN1 → CN1**: Full connector, safe to plug in ✅
+- **INTB**: Single wire only — CYD P3 pin 3 (GPIO35) → Carrier P3 pin 4 (INTB)
+- **P1 and P3**: Do NOT connect as full connectors
 
 ## Key Notes for Code
-- `Wire.begin(27, 26)` — use non-conflicting I2C pins
+- `Wire.begin(27, 22)` — use non-conflicting I2C pins
 - MCP23017 IODIRA = 0x00 (all Port A = outputs for LEDs)
 - MCP23017 IODIRB = 0xFF (all Port B = inputs for buttons)
 - MCP23017 GPPUB = 0xFF (enable pull-ups on Port B)
