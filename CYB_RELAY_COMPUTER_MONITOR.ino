@@ -371,19 +371,19 @@ void loop() {
         mcp_btn_state = mcp_found ? mcpReadReg(MCP_GPIOB) : mcp_led_state;
         Serial.printf("Button state: 0x%02X%s\n", mcp_btn_state, mcp_found ? "" : " (LED mirror)");
         for (int i = 0; i < 8; i++) {
-          bool active = (mcp_btn_state >> i) & 0x01;
+          bool active = (mcp_btn_state >> (7 - i)) & 0x01;
           Serial.printf("  SW%d: %s\n", i+1, active ? "ON" : "off");
         }
         drawMCP();
       } else if (cmd.startsWith("B") && cmd.length() == 2 && cmd.charAt(1) >= '1' && cmd.charAt(1) <= '8') {
         int n = cmd.charAt(1) - '1';  // 0-7
         mcp_btn_state = mcp_found ? mcpReadReg(MCP_GPIOB) : mcp_led_state;
-        bool active = (mcp_btn_state >> n) & 0x01;
+        bool active = (mcp_btn_state >> (7 - n)) & 0x01;
         Serial.printf("SW%d: %s\n", n+1, active ? "ON" : "off");
       } else if (cmd.startsWith("L") && cmd.length() == 2) {
         int n = cmd.charAt(1) - '1';  // 0-7
         if (n >= 0 && n <= 7) {
-          mcp_led_state ^= (1 << n);  // toggle
+          mcp_led_state ^= (1 << (7 - n));  // toggle (LED1=bit7, LED8=bit0)
           mcpWriteReg(MCP_OLATA, mcp_led_state);
           Serial.printf("LED%d toggled -> 0x%02X\n", n+1, mcp_led_state);
           drawMCP();
@@ -407,7 +407,7 @@ void loop() {
         uint8_t justPressed = mcp_btn_state & ~newBtnState;
         mcp_btn_state = newBtnState;
         for (int i = 0; i < 8; i++) {
-          if ((justPressed >> i) & 0x01) {
+          if ((justPressed >> (7 - i)) & 0x01) {  // BTN1=bit7
             Serial.printf("BTN%d pressed\n", i + 1);
             // Start alert for first newly pressed button
             if (!alertActive || alertButton != i + 1) {
@@ -427,14 +427,14 @@ void loop() {
   // Alert display management
   if (screen_type == 3 && alertActive) {
     unsigned long elapsed = millis() - alertStart;
-    if (elapsed >= 60000) {
+    if (elapsed >= 6000) {
       alertActive = false;
       tft.fillScreen(ILI9341_BLACK);
       drawHeader();
       drawMacBanner();
       drawMCP();
     } else {
-      int newPhase = (elapsed / 5000) % 2;
+      int newPhase = (elapsed / 500) % 2;
       if (newPhase != alertPhase) {
         alertPhase = newPhase;
         drawButtonAlert(alertButton, alertPhase);
@@ -724,7 +724,7 @@ void testLEDs() {
   Serial.println("LED walk test - start");
   // Walk forward
   for (int i = 0; i < 8; i++) {
-    mcp_led_state = (1 << i);
+    mcp_led_state = (1 << (7 - i));  // LED1=bit7 ... LED8=bit0
     mcpWriteReg(MCP_OLATA, mcp_led_state);
     drawMCP();
     delay(150);
@@ -808,7 +808,7 @@ void drawMCP() {
 
   for (int i = 0; i < 8; i++) {
     int16_t cx = cx_start + (i * cx_step);
-    bool on = (mcp_led_state >> i) & 0x01;
+    bool on = (mcp_led_state >> (7 - i)) & 0x01;  // LED1=bit7
     uint16_t color = on ? ILI9341_YELLOW : 0x4208;  // yellow or dark grey
     tft.fillCircle(cx, led_y + 5, radius, color);
     tft.drawCircle(cx, led_y + 5, radius, ILI9341_WHITE);
@@ -828,7 +828,7 @@ void drawMCP() {
 
   for (int i = 0; i < 8; i++) {
     int16_t cx = cx_start + (i * cx_step);
-    bool pressed = !((mcp_btn_state >> i) & 0x01);  // active LOW
+    bool pressed = !((mcp_btn_state >> (7 - i)) & 0x01);  // active LOW, BTN1=bit7
     uint16_t color = pressed ? ILI9341_YELLOW : 0x4208;
     tft.fillCircle(cx, btn_y + 5, radius, color);
     tft.drawCircle(cx, btn_y + 5, radius, ILI9341_WHITE);
