@@ -368,18 +368,23 @@ void loop() {
         Serial.println("All LEDs OFF");
         drawMCP();
       } else if (cmd == "B?") {
-        mcp_btn_state = mcp_found ? mcpReadReg(MCP_GPIOB) : mcp_led_state;
-        Serial.printf("Button state: 0x%02X%s\n", mcp_btn_state, mcp_found ? "" : " (LED mirror)");
+        // Show latched LED state (mirrors button toggles)
+        Serial.printf("LED latch state: 0x%02X\n", mcp_led_state);
         for (int i = 0; i < 8; i++) {
-          bool active = (mcp_btn_state >> (7 - i)) & 0x01;
-          Serial.printf("  SW%d: %s\n", i+1, active ? "ON" : "off");
+          bool on = (mcp_led_state >> (7 - i)) & 0x01;
+          Serial.printf("  LED/BTN%d: %s\n", i+1, on ? "ON" : "off");
         }
         drawMCP();
       } else if (cmd.startsWith("B") && cmd.length() == 2 && cmd.charAt(1) >= '1' && cmd.charAt(1) <= '8') {
-        int n = cmd.charAt(1) - '1';  // 0-7
-        mcp_btn_state = mcp_found ? mcpReadReg(MCP_GPIOB) : mcp_led_state;
-        bool active = (mcp_btn_state >> (7 - n)) & 0x01;
-        Serial.printf("SW%d: %s\n", n+1, active ? "ON" : "off");
+        int n = cmd.charAt(1) - '1';  // 0-7 — simulate button press
+        mcp_led_state ^= (1 << (7 - n));
+        mcpWriteReg(MCP_OLATA, mcp_led_state);
+        Serial.printf("BTN%d simulated -> LED%d %s\n", n+1, n+1, (mcp_led_state >> (7-n)) & 0x01 ? "ON" : "off");
+        alertActive = true;
+        alertButton = n + 1;
+        alertStart  = millis();
+        alertPhase  = 0;
+        drawButtonAlert(alertButton, alertPhase);
       } else if (cmd.startsWith("L") && cmd.length() == 2) {
         int n = cmd.charAt(1) - '1';  // 0-7
         if (n >= 0 && n <= 7) {
@@ -407,16 +412,17 @@ void loop() {
         uint8_t justPressed = mcp_btn_state & ~newBtnState;
         mcp_btn_state = newBtnState;
         for (int i = 0; i < 8; i++) {
-          if ((justPressed >> (7 - i)) & 0x01) {  // BTN1=bit7
+          if ((justPressed >> i) & 0x01) {  // BTN1=bit0
             Serial.printf("BTN%d pressed\n", i + 1);
-            // Start alert for first newly pressed button
-            if (!alertActive || alertButton != i + 1) {
-              alertActive = true;
-              alertButton = i + 1;
-              alertStart  = millis();
-              alertPhase  = 0;
-              drawButtonAlert(alertButton, alertPhase);
-            }
+            // Toggle matching LED (LED1=bit7, so LED for BTN i = bit (7-i))
+            mcp_led_state ^= (1 << (7 - i));
+            mcpWriteReg(MCP_OLATA, mcp_led_state);
+            // Start alert
+            alertActive = true;
+            alertButton = i + 1;
+            alertStart  = millis();
+            alertPhase  = 0;
+            drawButtonAlert(alertButton, alertPhase);
           }
         }
         if (!alertActive) drawMCP();
@@ -828,7 +834,7 @@ void drawMCP() {
 
   for (int i = 0; i < 8; i++) {
     int16_t cx = cx_start + (i * cx_step);
-    bool pressed = !((mcp_btn_state >> (7 - i)) & 0x01);  // active LOW, BTN1=bit7
+    bool pressed = !((mcp_btn_state >> i) & 0x01);  // active LOW, BTN1=bit0
     uint16_t color = pressed ? ILI9341_YELLOW : 0x4208;
     tft.fillCircle(cx, btn_y + 5, radius, color);
     tft.drawCircle(cx, btn_y + 5, radius, ILI9341_WHITE);
