@@ -468,11 +468,17 @@ void drawUptime() {
   char buf[9];
   snprintf(buf, sizeof(buf), "%02d:%02d:%02d", hh, mm, ss);
 
-  // Clear uptime row only
-  tft.fillRect(0, 280, 240, 36, ILI9341_BLACK);
+  // Clear label + uptime rows
+  tft.fillRect(0, 270, 240, 46, ILI9341_BLACK);
+  // "POWER ON TIMER" label - textSize 2, centered (14 chars * 12px = 168px, x=(240-168)/2=36)
+  tft.setTextSize(2);
+  tft.setTextColor(ILI9341_WHITE);
+  tft.setCursor(36, 272);
+  tft.print("POWER ON TIMER");
+  // Time value
   tft.setTextSize(3);
   tft.setTextColor(ILI9341_YELLOW);
-  tft.setCursor(48, 284);   // 8 chars * 18px = 144px wide, centered: (240-144)/2 = 48
+  tft.setCursor(48, 290);
   tft.print(buf);
 }
 
