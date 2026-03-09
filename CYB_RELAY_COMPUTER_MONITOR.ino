@@ -386,6 +386,24 @@ void loop() {
     }
   }
 
+  // Button polling - every 100ms
+  if (screen_type == 3 && mcp_found) {
+    static unsigned long lastBtnPoll = 0;
+    if (millis() - lastBtnPoll >= 100) {
+      lastBtnPoll = millis();
+      uint8_t newBtnState = mcpReadReg(MCP_GPIOB);
+      if (newBtnState != mcp_btn_state) {
+        mcp_btn_state = newBtnState;
+        // Log any newly pressed buttons (active LOW: 0 = pressed)
+        for (int i = 0; i < 8; i++) {
+          bool nowPressed = !((newBtnState >> i) & 0x01);
+          if (nowPressed) Serial.printf("BTN%d pressed\n", i + 1);
+        }
+        drawMCP();
+      }
+    }
+  }
+
   // Uptime counter - update every second
   if (screen_type == 3) {
     static unsigned long lastUptimeDraw = 0;
