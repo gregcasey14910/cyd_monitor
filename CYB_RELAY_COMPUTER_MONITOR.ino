@@ -264,11 +264,13 @@ void setup() {
   } else if (screen_type == 3) {
     initMCP();
     drawMCP();
+    testLEDs();
   }
 
   Serial.println("Ready!\n");
   if (screen_type == 3) {
     Serial.println("MCP23017 Serial Commands:");
+    Serial.println("  TEST   : Walk LED test");
     Serial.println("  L1-L8  : Toggle LED");
     Serial.println("  LA     : All LEDs ON");
     Serial.println("  LX     : All LEDs OFF");
@@ -332,7 +334,11 @@ void loop() {
       cmd.toUpperCase();
       lastSerialCmd = cmd;
 
-      if (cmd == "SCAN") {
+      if (cmd == "TEST") {
+        lastSerialCmd = cmd;
+        testLEDs();
+        drawMCP();
+      } else if (cmd == "SCAN") {
         Serial.println("Scanning I2C...");
         for (uint8_t addr = 1; addr < 127; addr++) {
           Wire.beginTransmission(addr);
@@ -654,6 +660,31 @@ void initMCP() {
   }
 }
 
+void testLEDs() {
+  if (!mcp_found) {
+    Serial.println("TEST: MCP not found, skipping");
+    return;
+  }
+  Serial.println("LED walk test - start");
+  // Walk forward
+  for (int i = 0; i < 8; i++) {
+    mcp_led_state = (1 << i);
+    mcpWriteReg(MCP_OLATA, mcp_led_state);
+    drawMCP();
+    delay(150);
+  }
+  // All on
+  mcp_led_state = 0xFF;
+  mcpWriteReg(MCP_OLATA, mcp_led_state);
+  drawMCP();
+  delay(400);
+  // All off
+  mcp_led_state = 0x00;
+  mcpWriteReg(MCP_OLATA, mcp_led_state);
+  drawMCP();
+  Serial.println("LED walk test - done");
+}
+
 void drawMCP() {
   // Clear working area
   tft.fillRect(0, displayStartY, 240, displayHeight, ILI9341_BLACK);
@@ -733,7 +764,7 @@ void drawMCP() {
   tft.setTextSize(1);
   tft.setTextColor(0x7BEF);  // light grey
   tft.setCursor(5, info_y + 55);
-  tft.print("Serial: L1-L8 LA LX B? SCAN");
+  tft.print("Serial: TEST L1-L8 LA LX B? SCAN");
 }
 
 void drawHeader() {
