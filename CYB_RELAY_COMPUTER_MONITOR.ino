@@ -29,6 +29,16 @@ uint8_t  mcp_led_state  = 0x00;  // current LED output state (Port A)
 uint8_t  mcp_btn_state  = 0xFF;  // current button state (Port B, active LOW)
 String   lastSerialCmd  = "none";
 
+// Forward declarations
+void drawButtonAlert(int btn, int phase);
+void drawMCP();
+
+// Button alert state
+bool           alertActive  = false;
+int            alertButton  = 0;
+int            alertPhase   = 0;   // 0 = color1 fg, 1 = color2 fg
+unsigned long  alertStart   = 0;
+
 // CYD Pin definitions for HARDWARE SPI
 #define TFT_CS   15
 #define TFT_DC   2
@@ -393,19 +403,47 @@ void loop() {
       lastBtnPoll = millis();
       uint8_t newBtnState = mcpReadReg(MCP_GPIOB);
       if (newBtnState != mcp_btn_state) {
+        // Detect falling edges (newly pressed, active LOW)
+        uint8_t justPressed = mcp_btn_state & ~newBtnState;
         mcp_btn_state = newBtnState;
-        // Log any newly pressed buttons (active LOW: 0 = pressed)
         for (int i = 0; i < 8; i++) {
-          bool nowPressed = !((newBtnState >> i) & 0x01);
-          if (nowPressed) Serial.printf("BTN%d pressed\n", i + 1);
+          if ((justPressed >> i) & 0x01) {
+            Serial.printf("BTN%d pressed\n", i + 1);
+            // Start alert for first newly pressed button
+            if (!alertActive || alertButton != i + 1) {
+              alertActive = true;
+              alertButton = i + 1;
+              alertStart  = millis();
+              alertPhase  = 0;
+              drawButtonAlert(alertButton, alertPhase);
+            }
+          }
         }
-        drawMCP();
+        if (!alertActive) drawMCP();
       }
     }
   }
 
-  // Uptime counter - update every second
-  if (screen_type == 3) {
+  // Alert display management
+  if (screen_type == 3 && alertActive) {
+    unsigned long elapsed = millis() - alertStart;
+    if (elapsed >= 60000) {
+      alertActive = false;
+      tft.fillScreen(ILI9341_BLACK);
+      drawHeader();
+      drawMacBanner();
+      drawMCP();
+    } else {
+      int newPhase = (elapsed / 5000) % 2;
+      if (newPhase != alertPhase) {
+        alertPhase = newPhase;
+        drawButtonAlert(alertButton, alertPhase);
+      }
+    }
+  }
+
+  // Uptime counter - update every second (suppressed during alert)
+  if (screen_type == 3 && !alertActive) {
     static unsigned long lastUptimeDraw = 0;
     if (millis() - lastUptimeDraw >= 1000) {
       lastUptimeDraw = millis();
@@ -701,6 +739,44 @@ void testLEDs() {
   mcpWriteReg(MCP_OLATA, mcp_led_state);
   drawMCP();
   Serial.println("LED walk test - done");
+}
+
+void getButtonColors(int btn, uint16_t &col1, uint16_t &col2) {
+  switch (btn) {
+    case 1: case 2: col1 = ILI9341_BLUE;   col2 = ILI9341_WHITE;  break;
+    case 3: case 7: col1 = ILI9341_WHITE;  col2 = ILI9341_BLACK;  break;
+    case 4:         col1 = ILI9341_GREEN;  col2 = ILI9341_YELLOW; break;
+    case 5: case 6: col1 = ILI9341_YELLOW; col2 = ILI9341_BLACK; break;
+    case 8:         col1 = ILI9341_RED;    col2 = ILI9341_BLACK;  break;
+    default:        col1 = ILI9341_WHITE;  col2 = ILI9341_BLACK;  break;
+  }
+}
+
+void drawButtonAlert(int btn, int phase) {
+  uint16_t col1, col2;
+  getButtonColors(btn, col1, col2);
+  uint16_t fg = (phase == 0) ? col1 : col2;
+  uint16_t bg = (phase == 0) ? col2 : col1;
+
+  tft.fillScreen(bg);
+
+  // Big number centered - textSize 8 = 48x64 per char
+  char buf[4];
+  sprintf(buf, "%d", btn);
+  int charW = 6 * 8;
+  int charH = 8 * 8;
+  int totalW = charW * strlen(buf);
+  tft.setTextSize(8);
+  tft.setTextColor(fg);
+  tft.setCursor((240 - totalW) / 2, (320 - charH) / 2);
+  tft.print(buf);
+
+  // Small label
+  tft.setTextSize(2);
+  tft.setTextColor(fg);
+  tft.setCursor(75, 270);
+  tft.print("BTN ");
+  tft.print(btn);
 }
 
 void drawMCP() {
