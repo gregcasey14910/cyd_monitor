@@ -32,6 +32,7 @@ String   lastSerialCmd  = "none";
 // Forward declarations
 void drawButtonAlert(int btn, int phase);
 void drawMCP();
+void switchScreen(int newType);
 
 // Button alert state
 bool           alertActive  = false;
@@ -54,8 +55,8 @@ Adafruit_ILI9341 tft = Adafruit_ILI9341(TFT_CS, TFT_DC, TFT_RST);
 
 String macAddress = "";
 
-// Screen type selection
-const int screen_type = 3;  // 1 = scrolling, 2 = ALU graphic, 3 = MCP23017 debug
+// Screen type selection (runtime — BTN1 cycles 1->2->3->1)
+int screen_type = 3;  // 1 = scrolling, 2 = ALU graphic, 3 = MCP23017 debug
 
 // ESP-NOW message structure
 typedef struct struct_message {
@@ -377,14 +378,20 @@ void loop() {
         drawMCP();
       } else if (cmd.startsWith("B") && cmd.length() == 2 && cmd.charAt(1) >= '1' && cmd.charAt(1) <= '8') {
         int n = cmd.charAt(1) - '1';  // 0-7 — simulate button press
-        mcp_led_state ^= (1 << (7 - n));
-        mcpWriteReg(MCP_OLATA, mcp_led_state);
-        Serial.printf("BTN%d simulated -> LED%d %s\n", n+1, n+1, (mcp_led_state >> (7-n)) & 0x01 ? "ON" : "off");
-        alertActive = true;
-        alertButton = n + 1;
-        alertStart  = millis();
-        alertPhase  = 0;
-        drawButtonAlert(alertButton, alertPhase);
+        if (n == 0) {
+          // B1: cycle screen type
+          int nextType = (screen_type % 3) + 1;
+          switchScreen(nextType);
+        } else {
+          mcp_led_state ^= (1 << (7 - n));
+          mcpWriteReg(MCP_OLATA, mcp_led_state);
+          Serial.printf("BTN%d simulated -> LED%d %s\n", n+1, n+1, (mcp_led_state >> (7-n)) & 0x01 ? "ON" : "off");
+          alertActive = true;
+          alertButton = n + 1;
+          alertStart  = millis();
+          alertPhase  = 0;
+          drawButtonAlert(alertButton, alertPhase);
+        }
       } else if (cmd.startsWith("L") && cmd.length() == 2) {
         int n = cmd.charAt(1) - '1';  // 0-7
         if (n >= 0 && n <= 7) {
@@ -401,32 +408,43 @@ void loop() {
     }
   }
 
-  // Button polling - every 100ms
-  if (screen_type == 3 && mcp_found) {
+  // Button polling - every 100ms (all screen types — BTN1 cycles screens)
+  // Debounce: button must read pressed on 2 consecutive polls (~200ms) to fire
+  if (mcp_found) {
     static unsigned long lastBtnPoll = 0;
+    static uint8_t btnPressCnt[8] = {0};  // consecutive low-reading counter per button
     if (millis() - lastBtnPoll >= 100) {
       lastBtnPoll = millis();
       uint8_t newBtnState = mcpReadReg(MCP_GPIOB);
-      if (newBtnState != mcp_btn_state) {
-        // Detect falling edges (newly pressed, active LOW)
-        uint8_t justPressed = mcp_btn_state & ~newBtnState;
-        mcp_btn_state = newBtnState;
-        for (int i = 0; i < 8; i++) {
-          if ((justPressed >> i) & 0x01) {  // BTN1=bit0
+      mcp_btn_state = newBtnState;
+      bool needRedraw = false;
+      for (int i = 0; i < 8; i++) {
+        bool pressed = !((newBtnState >> i) & 0x01);  // active LOW, BTN1=bit0
+        if (pressed) {
+          btnPressCnt[i]++;
+          if (btnPressCnt[i] == 2) {  // fire on 2nd consecutive press reading
             Serial.printf("BTN%d pressed\n", i + 1);
-            // Toggle matching LED (LED1=bit7, so LED for BTN i = bit (7-i))
-            mcp_led_state ^= (1 << (7 - i));
-            mcpWriteReg(MCP_OLATA, mcp_led_state);
-            // Start alert
-            alertActive = true;
-            alertButton = i + 1;
-            alertStart  = millis();
-            alertPhase  = 0;
-            drawButtonAlert(alertButton, alertPhase);
+            if (i == 0) {
+              // BTN1: cycle screen type 1->2->3->1
+              int nextType = (screen_type % 3) + 1;
+              switchScreen(nextType);
+            } else if (screen_type == 3) {
+              // Other buttons: toggle LED + alert (only in MCP screen)
+              mcp_led_state ^= (1 << (7 - i));
+              mcpWriteReg(MCP_OLATA, mcp_led_state);
+              alertActive = true;
+              alertButton = i + 1;
+              alertStart  = millis();
+              alertPhase  = 0;
+              drawButtonAlert(alertButton, alertPhase);
+            }
           }
+        } else {
+          if (btnPressCnt[i] > 0) needRedraw = true;
+          btnPressCnt[i] = 0;  // reset on release
         }
-        if (!alertActive) drawMCP();
       }
+      if (screen_type == 3 && !alertActive && needRedraw) drawMCP();
     }
   }
 
@@ -871,6 +889,25 @@ void drawMCP() {
   tft.setTextColor(0x7BEF);  // light grey
   tft.setCursor(5, info_y + 55);
   tft.print("Serial: TEST L1-L8 LA LX B? SCAN");
+}
+
+void switchScreen(int newType) {
+  screen_type = newType;
+  alertActive = false;
+  tft.fillScreen(ILI9341_BLACK);
+  drawHeader();
+  drawMacBanner();
+  if (screen_type == 1) {
+    tft.setTextSize(2);
+    tft.setTextColor(ILI9341_GREEN);
+    tft.setCursor(5, displayStartY);
+    tft.print("Listening...");
+  } else if (screen_type == 2) {
+    drawALU();
+  } else if (screen_type == 3) {
+    drawMCP();
+  }
+  Serial.printf("Screen -> type %d\n", screen_type);
 }
 
 void drawHeader() {
