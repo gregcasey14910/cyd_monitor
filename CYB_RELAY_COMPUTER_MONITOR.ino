@@ -206,7 +206,7 @@ void setup() {
   // Init display
   Serial.println("Init display...");
   tft.begin(40000000);
-  tft.setRotation(0);
+  tft.setRotation(2);  // 180 degrees - USB cable at top
   tft.fillScreen(ILI9341_BLACK);
   
   tft.setTextSize(2);
