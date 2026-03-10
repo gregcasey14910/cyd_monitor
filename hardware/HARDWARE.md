@@ -1,5 +1,23 @@
 # ETC 9000 - Hardware Documentation
 
+## ESP-NOW Node Registry
+
+| Node | Role | Chip | MAC Address | COM Port | Firmware | Status |
+|------|------|------|-------------|----------|----------|--------|
+| CYD Monitor | Master / Display | ESP32 | 30:C9:22:32:34:38 | COM5 | CYB_RELAY_COMPUTER_MONITOR | ✅ Active |
+| Reg Node 1 | Register slave | ESP32-C3 | AC:A7:04:BC:06:60 | COM28 | RC_REG_ESP32C3 | ✅ Active |
+| Reg Node 2 | TBD | ESP32-C3 | TBD | TBD | TBD | ⬜ Pending |
+| Reg Node 3 | TBD | ESP32-C3 | TBD | TBD | TBD | ⬜ Pending |
+| Reg Node 4 | TBD | ESP32-C3 | TBD | TBD | TBD | ⬜ Pending |
+| Reg Node 5 | TBD | ESP32-C3 | TBD | TBD | TBD | ⬜ Pending |
+| Reg Node 6 | TBD | ESP32-C3 | TBD | TBD | TBD | ⬜ Pending |
+| Reg Node 7 | TBD | ESP32-C3 | TBD | TBD | TBD | ⬜ Pending |
+| Reg Node 8 | TBD | ESP32-C3 | TBD | TBD | TBD | ⬜ Pending |
+
+> Flash each new C3, read its MAC from serial output, and fill in the table.
+
+---
+
 ## System Block Diagram
 
 ```mermaid
